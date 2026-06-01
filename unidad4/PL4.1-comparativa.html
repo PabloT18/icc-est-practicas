@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <title>Guía de práctica - Comparación situacional de algoritmos de ordenamiento</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
+</head>
+
+<body>
+    <main
+        class="page"
+        id="practice-content"
+    >
+        <table class="guide-table">
+            <tr>
+                <td class="logo-cell">
+                    <img
+                        src="../assets/ups-svg-plain.svg"
+                        alt="Logo UPS"
+                        class="logo-img"
+                    >
+                </td>
+                <td
+                    colspan="4"
+                    class="title-cell"
+                >
+                    FORMATO DE GUÍA DE PRÁCTICA DE LABORATORIO / TALLERES / CENTROS DE SIMULACIÓN – PARA DOCENTES
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><strong>CARRERA:</strong> Computación</td>
+                <td colspan="3"><strong>ASIGNATURA:</strong> Estructura de Datos</td>
+            </tr>
+
+            <tr>
+                <td><strong>NRO. PRÁCTICA:</strong></td>
+                <td>4</td>
+                <td colspan="3"><strong>TÍTULO PRÁCTICA:</strong> Comparación situacional de algoritmos de ordenamiento
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>OBJETIVO</strong>
+                    <span class="muted">(Colocar el o los objetivos que se alcanzarán al desarrollar la
+                        práctica):</span>
+                    <ul>
+                        <li>Implementar algoritmos de ordenamiento sobre arreglos de objetos en Java.</li>
+                        <li>Comparar el comportamiento de Inserción y QuickSort en arreglos desordenados y casi
+                            ordenados.</li>
+                        <li>Medir tiempos de ejecución utilizando una clase de benchmarking propia.</li>
+                        <li>Analizar cómo el estado inicial de los datos influye en el rendimiento de un algoritmo.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="section-label">INSTRUCCIONES:</td>
+                <td
+                    colspan="4"
+                    class="section-content"
+                >
+                    <ol>
+                        <li>
+                            Desarrollar una aplicación en Java que permita generar arreglos de objetos de tipo
+                            <code>Persona</code> y ordenarlos utilizando únicamente los siguientes algoritmos:
+                            <ul>
+                                <li>Inserción.</li>
+                                <li>QuickSort.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Modelo de datos</strong>
+                            <p>Se debe crear una clase <code>Persona</code> con los siguientes atributos:</p>
+                            <ul>
+                                <li><code>String nombre</code></li>
+                                <li><code>int edad</code></li>
+                            </ul>
+                            <p>Además, la clase debe tener un método calculado que permita comparar dos personas. El
+                                ordenamiento se realizará primero por edad y, si dos personas tienen la misma edad, se
+                                usará el valor numérico generado a partir del nombre.</p>
+                            <p>Ejemplo del criterio de comparación:</p>
+                            <pre class="code-line">public int getCriterioOrdenamiento() {
+    int valorNombre = 0;
+
+    for (int i = 0; i &lt; nombre.length(); i++) {
+        valorNombre += nombre.charAt(i);
+    }
+
+    return edad * 100000 + valorNombre;
+}</pre>
+                            <p>El método anterior permite obtener un número que combina la edad y el nombre. Este valor
+                                será usado por los algoritmos para ordenar el arreglo de personas.</p>
+                        </li>
+
+                        <li>
+                            <strong>Generación de datos</strong>
+                            <p>El programa debe incluir un método generador que reciba como parámetro el tamaño del
+                                arreglo y retorne un arreglo de personas.</p>
+                            <p>El método debe cumplir lo siguiente:</p>
+                            <ul>
+                                <li>Generar nombres con el formato <code>Persona 1</code>, <code>Persona 2</code>,
+                                    <code>Persona 3</code>, etc.
+                                </li>
+                                <li>Generar edades aleatorias entre 0 y 100 años.</li>
+                                <li>Permitir crear arreglos de 10.000, 50.000 y 100.000 personas.</li>
+                            </ul>
+                            <pre class="code-line">public static Persona[] generarPersonas(int cantidad) {
+    Persona[] personas = new Persona[cantidad];
+
+    for (int i = 0; i &lt; cantidad; i++) {
+        String nombre = "Persona " + (i + 1);
+        int edad = (int) (Math.random() * 101);
+        personas[i] = new Persona(nombre, edad);
+    }
+
+    return personas;
+}</pre>
+                        </li>
+
+                        <li>
+                            <strong>Clase Benchmarking</strong>
+                            <p>Se debe crear una clase <code>Benchmarking</code> que permita medir el tiempo
+                                de ejecución de cualquier algoritmo enviado como función.</p>
+                            <p>La clase debe usar <code>System.nanoTime()</code> para calcular la duración de cada
+                                ejecución.</p>
+                            <p>Debe recibir:</p>
+                            <ul>
+                                <li>La función que ejecuta el algoritmo.</li>
+                                <li>El nombre del algoritmo.</li>
+                                <li>El tamaño de la muestra.</li>
+                                <li>El escenario evaluado.</li>
+                            </ul>
+                            <p>Debe retornar un objeto <code>Resultado</code> con el nombre del algoritmo, tamaño de
+                                muestra, escenario y tiempo obtenido.</p>
+                        </li>
+
+                        <li>
+                            <strong>Clase Resultado</strong>
+                            <p>Se debe crear una clase <code>Resultado</code> para almacenar los datos de
+                                cada medición.</p>
+                            <p>Debe contener al menos:</p>
+                            <ul>
+                                <li><code>String algoritmo</code></li>
+                                <li><code>String escenario</code></li>
+                                <li><code>int sample</code></li>
+                                <li><code>double tiempoNano</code></li>
+                                <li><code>double tiempoMilis</code></li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Clase de control de ordenamiento</strong>
+                            <p>Se debe crear una clase controladora, por ejemplo
+                                <code>SortPersonaMethods</code>, que implemente los métodos:
+                            </p>
+                            <ul>
+                                <li><code>insertionSort(Persona[] personas)</code></li>
+                                <li><code>quickSort(Persona[] personas, int inicio, int fin)</code></li>
+                            </ul>
+                            <p>No se permite utilizar métodos de ordenamiento propios de Java, como
+                                <code>Arrays.sort()</code>, <code>Collections.sort()</code> o similares.
+                            </p>
+                        </li>
+
+                        <li>
+                            <strong>Uso correcto de copias</strong>
+                            <p>Cada algoritmo debe trabajar con una copia independiente del arreglo original. No se debe
+                                medir un algoritmo sobre un arreglo que ya fue modificado por otro algoritmo.</p>
+                            <pre class="code-line">Persona[] base = generarPersonas(size);
+Persona[] copiaInsercion = base.clone();
+Persona[] copiaQuickSort = base.clone();</pre>
+                            <p>Si no se realizan copias independientes, la comparación de tiempos no será válida.</p>
+                        </li>
+
+                        <li>
+                            <strong>Consideraciones</strong>
+                            <ul>
+                                <li>La tarea es individual.</li>
+                                <li>El proyecto debe subirse al AVAC con el enlace del repositorio Git.</li>
+                                <li>El código debe estar estructurado en paquetes y clases.</li>
+                                <li>El código debe compilar y ejecutarse sin errores.</li>
+                                <li>No se permite usar algoritmos de ordenamiento ya implementados por Java.</li>
+                                <li>Los resultados y conclusiones deben ser redactados por cada uno. No pueden ser
+                                    generados con IA.</li>
+                                <li>Se debe adjuntar evidencia de ejecución con los tiempos obtenidos.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Entregables</strong>
+                            <ul>
+                                <li>El informe debe estar en el <strong>RADME</strong> del repositorio remotoro; con el
+                                    formtato que se ha trabajado</li>
+                                <li>Debe contrar con:
+                                    <ul>
+                                        <li>Resultatados: Las tablas con los resultados correspondientes</li>
+                                        <li>Análisis: respuestas a loas preguntas</li>
+                                        <li>Conclusiones</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                    </ol>
+
+                    <h3>Rúbrica</h3>
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Descripción</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Benchmarking</td>
+                                <td>Implementa correctamente la medición de tiempo y almacena los resultados en una
+                                    clase Resultado.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+
+                            <tr>
+                                <td>QuickSort</td>
+                                <td>Ordena correctamente arreglos de objetos Persona usando el criterio definido.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Escenarios comparativos</td>
+                                <td>Ejecuta correctamente los dos escenarios solicitados para los tres tamaños de
+                                    muestra.</td>
+                                <td class="center">2 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Resultados</td>
+                                <td>Presenta tablas completas con los tiempos obtenidos y evidencia de ejecución.</td>
+                                <td class="center">3 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Conclusiones</td>
+                                <td>Redacta conclusiones propias a partir de los resultados obtenidos.</td>
+                                <td class="center">3 pts</td>
+                            </tr>
+                            <tr class="subtotal">
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td class="center">10 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>ACTIVIDADES POR DESARROLLAR</h3>
+
+                    <h4>1. Crear la estructura del proyecto</h4>
+                    <p>El proyecto debe estar organizado por paquetes. Se recomienda la siguiente estructura:</p>
+                    <pre class="code-line">src/
+├── app/
+│   └── App.java
+├── controles/
+│   └── SortPersonaMethods.java
+├── models/
+│   ├── Persona.java
+│   └── Resultado.java
+└── utils/
+    └── Benchmarking.java</pre>
+
+                    <h4>2. Crear la clase Persona</h4>
+                    <p>La clase <code>Persona</code> debe representar los datos que serán ordenados.</p>
+                    <pre class="code-line">package models;
+
+public class Persona {
+    private String nombre;
+    private int edad;
+    public int getCriterioOrdenamiento() {}
+}</pre>
+
+                    <h4>3. Crear la clase Resultado</h4>
+                    <p>La clase <code>Resultado</code> debe guardar la información de cada medición.</p>
+                    <pre class="code-line">package models;
+
+public class Resultado {
+    private String algoritmo;
+    private String escenario;
+    private int sample;
+    private double tiempoNano;
+    private double tiempoMillis;
+
+    public Resultado(String algoritmo, String escenario, int sample, double tiempoNano) {
+        this.algoritmo = algoritmo;
+        this.escenario = escenario;
+        this.sample = sample;
+        this.tiempoNano = tiempoNano;
+        this.tiempoMillis = tiempoNano / 1_000_000.0;
+    }
+}</pre>
+
+                    <h4>4. Crear la clase Benchmarking</h4>
+                    <p>La clase <code>Benchmarking</code> debe medir el tiempo de ejecución de una función.</p>
+                    <pre class="code-line">package utils;
+
+import java.util.concurrent.Callable;
+import models.Resultado;
+
+public class Benchmarking {
+    public static Resultado medirTiempo(
+            Callable&lt;Void&gt; funcion,
+            String algoritmo,
+            String escenario,
+            int sample
+    ) {
+        try {
+            long inicio = System.nanoTime();
+            funcion.call();
+            long fin = System.nanoTime();
+
+            double duracion = fin - inicio;
+
+            return new Resultado(algoritmo, escenario, sample, duracion);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al ejecutar la función de ordenamiento");
+        }
+    }
+}</pre>
+
+                    <h4>5. Crear los métodos de ordenamiento</h4>
+                    <p>La clase <code>SortPersonaMethods</code> debe implementar Inserción y QuickSort.</p>
+                    <pre class="code-line">package controles;
+
+import models.Persona;
+
+public class SortPersonaMethods {
+
+    public void insertionSort(Persona[] personas) { 
+        //add code
+    }
+
+    public void quickSort(Persona[] personas, int inicio, int fin) {
+        if (inicio &lt; fin) {
+            int indicePivote = particionar(personas, inicio, fin);
+            quickSort(personas, inicio, indicePivote - 1);
+            quickSort(personas, indicePivote + 1, fin);
+        }
+    }
+
+    private int particionar(Persona[] personas, int inicio, int fin) {
+        Persona pivote = personas[fin];
+        int i = inicio - 1;
+
+        for (int j = inicio; j &lt; fin; j++) {
+            if (personas[j].getCriterioOrdenamiento() &lt;= pivote.getCriterioOrdenamiento()) {
+                i++;
+                intercambiar(personas, i, j);
+            }
+        }
+
+        intercambiar(personas, i + 1, fin);
+        return i + 1;
+    }
+
+    private void intercambiar(Persona[] personas, int i, int j) {
+        Persona aux = personas[i];
+        personas[i] = personas[j];
+        personas[j] = aux;
+    }
+}</pre>
+
+                    <h4>6. Crear el método generador de personas</h4>
+                    <p>En la clase <code>App</code>, crear un método estático para generar las muestras.</p>
+                    <pre class="code-line">public static Persona[] generarPersonas(int cantidad) {
+    Persona[] personas = new Persona[cantidad];
+
+    for (int i = 0; i &lt; cantidad; i++) {
+        String nombre = "Persona " + (i + 1);
+        int edad = (int) (Math.random() * 101);
+        personas[i] = new Persona(nombre, edad);
+    }
+
+    return personas;
+}</pre>
+
+                    <h4>7. Escenario 1: arreglo completamente desordenado</h4>
+                    <p>En este escenario, se debe generar un arreglo nuevo de personas y ordenar copias
+                        independientes usando Inserción y QuickSort.</p>
+                    <p>Se debe ejecutar con los siguientes tamaños:</p>
+                    <ul>
+                        <li>10.000 personas.</li>
+                        <li>50.000 personas.</li>
+                        <li>100.000 personas.</li>
+                    </ul>
+                    <p>Proceso:</p>
+                    <ol>
+                        <li>Generar el arreglo base.</li>
+                        <li>Crear una copia para Inserción.</li>
+                        <li>Crear una copia para QuickSort.</li>
+                        <li>Medir el tiempo de Inserción.</li>
+                        <li>Medir el tiempo de QuickSort.</li>
+                        <li>Guardar los tiempos obtenidos.</li>
+                    </ol>
+                    <p>En este escenario se espera que QuickSort tenga un mejor rendimiento en muestras grandes, porque
+                        el arreglo inicial está desordenado.</p>
+
+                    <h4>8. Escenario 2: arreglo ordenado más una nueva persona</h4>
+                    <p>En este escenario, primero se debe ordenar el arreglo base. Luego se debe agregar una nueva
+                        persona al final y volver a ordenar.</p>
+                    <p>Proceso:</p>
+                    <ol>
+                        <li>Generar el arreglo base.</li>
+                        <li>Ordenar el arreglo base inicialmente.</li>
+                        <li>Crear un nuevo arreglo con una posición adicional.</li>
+                        <li>Copiar las personas ya ordenadas al nuevo arreglo.</li>
+                        <li>Agregar una nueva persona al final.</li>
+                        <li>Crear una copia para Inserción.</li>
+                        <li>Crear una copia para QuickSort.</li>
+                        <li>Medir el tiempo de Inserción.</li>
+                        <li>Medir el tiempo de QuickSort.</li>
+                        <li>Guardar los tiempos obtenidos.</li>
+                    </ol>
+
+
+
+                    <h4>9. Salida esperada de referencia</h4>
+                    <p>Los tiempos pueden variar según el computador, sistema operativo, versión de Java y procesos
+                        activos. La salida debe tener una estructura similar a la siguiente:</p>
+                    <pre class="console">Desordenado | Inserción | 10000 | 145.32 ms
+Desordenado | QuickSort | 10000 | 4.78 ms
+Casi ordenado + 1 persona | Inserción | 10001 | 0.91 ms
+Casi ordenado + 1 persona | QuickSort | 10001 | 3.21 ms
+
+Desordenado | Inserción | 50000 | 3280.45 ms
+Desordenado | QuickSort | 50000 | 18.63 ms
+Casi ordenado + 1 persona | Inserción | 50001 | 3.47 ms
+Casi ordenado + 1 persona | QuickSort | 50001 | 14.28 ms</pre>
+                    <p>Los valores anteriores son referenciales. Cada estudiante debe registrar sus propios resultados.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RESULTADO(S) OBTENIDO(S):</strong><br>
+                    Se debe registrar los resultados obtenidos en su propio computador. Los tiempos no deben
+                    ser inventados ni generados con IA.
+
+                    <h4>Tabla 1. Escenario 1: arreglo completamente desordenado</h4>
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Tamaño de muestra</th>
+                                <th>Tiempo Inserción</th>
+                                <th>Tiempo QuickSort</th>
+                                <th>Algoritmo más rápido</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="center">10.000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="center">50.000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="center">100.000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Tabla 2. Escenario 2: arreglo ordenado más una nueva persona</h4>
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Tamaño de muestra</th>
+                                <th>Tiempo Inserción</th>
+                                <th>Tiempo QuickSort</th>
+                                <th>Algoritmo más rápido</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="center">10.001</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="center">50.001</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="center">100.001</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Análisis requerido</h4>
+                    <p>Después de completar las tablas, se debe responder:</p>
+                    <ul>
+                        <li>¿Qué algoritmo fue más rápido en el escenario desordenado?</li>
+                        <li>¿Qué algoritmo fue más rápido en el escenario casi ordenado?</li>
+                        <li>¿El crecimiento del tamaño de muestra afectó por igual a los dos algoritmos?</li>
+                        <li>¿Por qué Inserción puede mejorar cuando el arreglo ya está casi ordenado?</li>
+                        <li>¿Por qué QuickSort suele ser mejor cuando los datos están muy desordenados?</li>
+                    </ul>
+                    <p><strong>Nota:</strong> Los resultados, observaciones y análisis deben ser escritos por cada uno
+                        con base en su ejecución. No se permite presentar análisis generados por IA.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>CONCLUSIONES:</strong>
+                    <p>Se debe redactar al menos tres conclusiones propias. Las conclusiones deben estar
+                        relacionadas directamente con los tiempos obtenidos.</p>
+                    <ul>
+                        <li>Conclusión 1: ________________________________________________________________</li>
+                        <li>Conclusión 2: ________________________________________________________________</li>
+                        <li>Conclusión 3: ________________________________________________________________</li>
+                    </ul>
+                    <p><strong>Importante:</strong> Las conclusiones no pueden ser generadas con IA. Deben reflejar su
+                        análisis a partir de los resultados reales de la práctica.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RECOMENDACIONES:</strong>
+                    <ul>
+                        <li>Ejecutar cada prueba más de una vez y registrar un tiempo representativo.</li>
+                        <li>Cerrar aplicaciones innecesarias antes de medir tiempos.</li>
+                        <li>Usar siempre copias independientes del arreglo base.</li>
+                        <li>No imprimir todos los objetos del arreglo durante la medición, porque eso altera el tiempo
+                            de ejecución.</li>
+                        <li>Verificar que ambos algoritmos ordenen correctamente antes de comparar tiempos.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div style="text-align: center; margin: 0 auto;">
+            <p class="signature">
+                Docente / Técnico Docente: Ing. Pablo Torres
+            </p>
+            <p>
+                Firma: _______________________________
+            </p>
+        </div>
+
+        <div class="footer">
+            <span>Formato aprobado con Res. C.S. N° 076-04-2016-04-20</span>
+            <span>Página 1 de 1</span>
+        </div>
+    </main>
+    <script src="../js/protection.js"></script>
+    <!-- <script src="../js/protection-security-overlay.js"></script> -->
+</body>
+
+</html>

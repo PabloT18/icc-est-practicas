@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <title>Guía de práctica - Estructuras lineales con pilas y colas</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
+</head>
+
+<body>
+    <main
+        class="page"
+        id="practice-content"
+    >
+        <table class="guide-table">
+            <tr>
+                <td class="logo-cell">
+                    <img
+                        src="../assets/ups-svg-plain.svg"
+                        alt="Logo UPS"
+                        class="logo-img"
+                    >
+                </td>
+                <td
+                    colspan="4"
+                    class="title-cell"
+                >
+                    FORMATO DE GUÍA DE PRÁCTICA DE LABORATORIO / TALLERES / CENTROS DE SIMULACIÓN – PARA DOCENTES
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><strong>CARRERA:</strong> Computación</td>
+                <td colspan="3"><strong>ASIGNATURA:</strong> Estructura de Datos – Segundo Interciclo</td>
+            </tr>
+
+            <tr>
+                <td><strong>NRO. PRÁCTICA:</strong></td>
+                <td>3</td>
+                <td colspan="3">
+                    <strong>TÍTULO PRÁCTICA:</strong> Ejercicios de lógica con estructuras lineales: pilas y colas
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>OBJETIVO</strong>
+                    <ul>
+                        <li>Aplicar estructuras de datos lineales en la resolución de problemas lógicos.</li>
+                        <li>Implementar soluciones en Java usando pilas y colas.</li>
+                        <li>Fortalecer el uso de operaciones propias de las estructuras Stack y Queue.</li>
+                        <li>Organizar el código en clases y paquetes según una estructura definida.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="section-label">INSTRUCCIONES:</td>
+                <td
+                    colspan="4"
+                    class="section-content"
+                >
+                    <ol>
+                        <li>
+                            Desarrollar una aplicación en Java que resuelva los siguientes ejercicios:
+                            <ul>
+                                <li>Ejercicio 01: Validación de signos usando Stack.</li>
+                                <li>Ejercicio 02: Ordenamiento de un Stack usando únicamente Stacks adicionales.</li>
+                                <li>Ejercicio 03: Validación de palíndromo usando Queue.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Estructura del proyecto</strong>
+                            <p>El proyecto debe organizarse en carpetas y clases separadas. Se recomienda la siguiente
+                                estructura:</p>
+
+                            <pre class="code-line">src/
+├── app/
+│   └── App.java
+└── utils/
+    ├── SignValidator.java
+    ├── StackSorter.java
+    └── QueuePalindrome.java</pre>
+                        </li>
+
+                        <li>
+                            <strong>Nombres obligatorios de clases y métodos</strong>
+                            <p>Los nombres deben respetarse exactamente para que las pruebas unitarias puedan ejecutarse
+                                correctamente.</p>
+
+                            <table class="rubric">
+                                <thead>
+                                    <tr>
+                                        <th>Ejercicio</th>
+                                        <th>Clase</th>
+                                        <th>Método obligatorio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Validación de signos</td>
+                                        <td><code>SignValidator</code></td>
+                                        <td><code>boolean isValid(String s)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ordenar Stack</td>
+                                        <td><code>StackSorter</code></td>
+                                        <td><code>void sortStack(Stack&lt;Integer&gt; stack)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Palíndromo usando Colas</td>
+                                        <td><code>QueuePalindrome</code></td>
+                                        <td><code>boolean isPalindrome(String text)</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li>
+                            <strong>Pruebas unitarias</strong>
+                            <p>Copiar las carpetas y clases adjuntas en el AVAC dentro de la carpeta <code>test</code>.
+                                Estas clases corresponden a las pruebas unitarias de la práctica.</p>
+                        </li>
+
+                        <li>
+                            <strong>Ejecución desde una clase principal</strong>
+                            <p>Todos los ejercicios deben ejecutarse desde una única clase principal
+                                <code>App.java</code>. La salida por consola debe evidenciar el funcionamiento de cada
+                                ejercicio.
+                            </p>
+                        </li>
+
+                        <li>
+                            <strong>Restricciones</strong>
+                            <ul>
+                                <li>No se permite usar soluciones ya implementadas por Java para resolver directamente
+                                    la lógica principal.</li>
+                                <li>En el ejercicio de ordenamiento de Stack no se permite copiar los datos a arreglos,
+                                    listas, ArrayList, LinkedList u otra estructura diferente a Stack.</li>
+                                <li>El ejercicio de palíndromo debe usar colas internamente. No se permite resolver
+                                    comparando directamente los caracteres del String.</li>
+                                <li>El código debe compilar y ejecutarse sin errores.</li>
+                                <li>El proyecto debe estar organizado en paquetes y clases.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Repositorio y versión</strong>
+                            <p>Al finalizar la práctica, el estudiante debe realizar commit, push y generar una versión
+                                anotada en GitHub.</p>
+
+                            <pre class="console">Versión: 2.0.2
+Mensaje de versión: Estructuras Lineales – Ejercicios</pre>
+
+                            <p>En el AVAC se debe cargar la URL directa del Release correspondiente a la versión
+                                <code>2.0.2</code>.
+                            </p>
+                        </li>
+
+                        <li>
+                            <strong>Entregables</strong>
+                            <ul>
+                                <li>URL directa del Release <code>2.0.2</code>.</li>
+                                <li>README.md con la explicación de cada ejercicio.</li>
+                                <li>Capturas o bloques de código en Markdown del código desarrollado.</li>
+                                <li>Capturas o bloques de salida de consola de la ejecución de cada ejercicio.</li>
+                                <li>Descripción breve de cómo ejecutar el proyecto.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Criterio de no calificación</strong>
+                            <ul>
+                                <li>No se calificará si no existe la versión <code>2.0.2</code>.</li>
+                                <li>No se calificará si el README no contiene la explicación de lo desarrollado.</li>
+                                <li>No se calificará si los nombres de clases o métodos no corresponden a los
+                                    solicitados.</li>
+                                <li>No se calificará si el proyecto no compila.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h3>Rúbrica</h3>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Descripción</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ejercicio 01: Validación de signos</td>
+                                <td>Implementa correctamente la clase <code>SignValidator</code> y el método
+                                    <code>isValid(String s)</code>. Valida cadenas correctas e incorrectas usando Stack.
+                                </td>
+                                <td class="center">2 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Ejercicio 02: Ordenar Stack</td>
+                                <td>Implementa correctamente la clase <code>StackSorter</code> y el método
+                                    <code>sortStack(Stack&lt;Integer&gt; stack)</code>. Ordena el Stack dejando el menor
+                                    elemento en el tope.
+                                </td>
+                                <td class="center">2 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Ejercicio 03: Palíndromo usando Colas</td>
+                                <td>Implementa correctamente la clase <code>QueuePalindrome</code> y el método
+                                    <code>isPalindrome(String text)</code>. Usa colas para validar casos verdaderos y
+                                    falsos.
+                                </td>
+                                <td class="center">2 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Ejecución desde App</td>
+                                <td>Todos los ejercicios se ejecutan desde una clase principal, mostrando claramente
+                                    entradas, procesos y salidas por consola.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Estructura del proyecto y restricciones</td>
+                                <td>Respeta paquetes, clases, nombres de métodos y restricciones de uso de estructuras
+                                    de datos.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>README y evidencias</td>
+                                <td>Incluye explicación de cada ejercicio, código o capturas en Markdown y capturas de
+                                    la salida por consola.</td>
+                                <td class="center">2 pts</td>
+                            </tr>
+                            <tr class="subtotal">
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td class="center">10 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>ACTIVIDADES POR DESARROLLAR</h3>
+
+                    <h4>1. Crear la estructura del proyecto</h4>
+                    <p>Crear la estructura base del proyecto Java con una clase principal y tres clases utilitarias.</p>
+
+                    <pre class="code-line">src/
+├── app/
+│   └── App.java
+└── utils/
+    ├── SignValidator.java
+    ├── StackSorter.java
+    └── QueuePalindrome.java</pre>
+
+                    <h4>2. Ejercicio 01: Validación de Signos</h4>
+                    <p>Implementar un algoritmo que determine si un String que contiene únicamente los caracteres
+                        <code>( ) { } [ ]</code> es válido.
+                    </p>
+
+                    <p>Reglas:</p>
+                    <ul>
+                        <li>Todo símbolo de apertura debe cerrarse.</li>
+                        <li>Los símbolos deben cerrarse en el orden correcto.</li>
+                        <li>Cada símbolo de cierre debe corresponder al tipo correcto de apertura.</li>
+                    </ul>
+
+                    <p>Clase requerida:</p>
+
+                    <pre class="code-line">package utils;
+
+public class SignValidator {
+
+    public boolean isValid(String s) {
+        // add code
+    }
+}</pre>
+
+                    <p>Ejemplos:</p>
+
+                    <pre class="console">Input:  "([]){}"
+Output: true
+
+Input:  "({)}"
+Output: false</pre>
+
+                    <h4>3. Ejercicio 02: Ordenar un Stack</h4>
+                    <p>Implementar un algoritmo que ordene un Stack de enteros de forma que los elementos más pequeños
+                        queden en el tope.</p>
+
+                    <p>Restricciones:</p>
+                    <ul>
+                        <li>Solo se permite usar Stacks adicionales.</li>
+                        <li>No se permite copiar los elementos a arreglos, listas u otra estructura.</li>
+                        <li>Solo se deben usar operaciones propias del Stack: <code>push</code>, <code>pop</code>,
+                            <code>peek</code> e <code>isEmpty</code>.
+                        </li>
+                    </ul>
+
+                    <p>Clase requerida:</p>
+
+                    <pre class="code-line">package utils;
+
+import java.util.Stack;
+
+public class StackSorter {
+
+    public void sortStack(Stack&lt;Integer&gt; stack) {
+        // add code
+    }
+}</pre>
+
+                    <p>Ejemplo:</p>
+
+                    <pre class="console">Input:  (tope) 5 -> 1 -> 4 -> 2
+Output: (tope) 1 -> 2 -> 4 -> 5</pre>
+
+                    <h4>4. Ejercicio 03: Palíndromo usando Colas</h4>
+                    <p>Implementar un algoritmo que determine si una palabra es palíndroma usando colas.</p>
+
+                    <p>Reglas:</p>
+                    <ul>
+                        <li>El método recibe un String.</li>
+                        <li>Internamente debe usar colas.</li>
+                        <li>No se debe comparar directamente el String original con su versión invertida.</li>
+                        <li>Se debe aprovechar el comportamiento FIFO de las colas.</li>
+                    </ul>
+
+                    <p>Clase requerida:</p>
+
+                    <pre class="code-line">package utils;
+
+public class QueuePalindrome {
+
+    public boolean isPalindrome(String text) {
+        // add code
+    }
+}</pre>
+
+                    <p>Ejemplos:</p>
+
+                    <pre class="console">Input:  "ana"
+Output: true
+
+Input:  "radar"
+Output: true
+
+Input:  "java"
+Output: false</pre>
+
+                    <h4>5. Ejecutar todos los ejercicios desde App.java</h4>
+                    <p>La clase principal debe ejecutar los tres ejercicios y mostrar resultados en consola.</p>
+
+                    <pre class="code-line">package app;
+
+import java.util.Stack;
+import utils.SignValidator;
+import utils.StackSorter;
+import utils.QueuePalindrome;
+
+public class App {
+
+    public static void main(String[] args) {
+        runSignValidator();
+        runStackSorter();
+        runQueuePalindrome();
+    }
+
+    private static void runSignValidator() {
+        SignValidator signValidator = new SignValidator();
+
+        String cadena1 = "{[()]}";
+        String cadena2 = "{[(])}";
+
+        System.out.println("Ejercicio 01: Validación de Signos");
+        System.out.println("Cadena: " + cadena1 + " | Resultado: " + signValidator.isValid(cadena1));
+        System.out.println("Cadena: " + cadena2 + " | Resultado: " + signValidator.isValid(cadena2));
+    }
+
+    private static void runStackSorter() {
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+
+        stack.push(2);
+        stack.push(4);
+        stack.push(1);
+        stack.push(5);
+
+        StackSorter sorter = new StackSorter();
+
+        System.out.println("\nEjercicio 02: Ordenar Stack");
+        System.out.println("Stack original: " + stack);
+
+        sorter.sortStack(stack);
+
+        System.out.println("Stack ordenado: " + stack);
+        System.out.println("Tope esperado: " + stack.peek());
+    }
+
+    private static void runQueuePalindrome() {
+        QueuePalindrome queuePalindrome = new QueuePalindrome();
+
+        System.out.println("\nEjercicio 03: Palíndromo usando Colas");
+        System.out.println("ana   | Resultado: " + queuePalindrome.isPalindrome("ana"));
+        System.out.println("radar | Resultado: " + queuePalindrome.isPalindrome("radar"));
+        System.out.println("java  | Resultado: " + queuePalindrome.isPalindrome("java"));
+    }
+}</pre>
+
+                    <h4>6. README.md requerido</h4>
+                    <p>El README debe contener como mínimo:</p>
+
+                    <ul>
+                        <li>Título de la práctica.</li>
+                        <li>Nombre del estudiante.</li>
+                        <li>Descripción general del proyecto.</li>
+                        <li>Explicación del Ejercicio 01.</li>
+                        <li>Explicación del Ejercicio 02.</li>
+                        <li>Explicación del Ejercicio 03.</li>
+                        <li>Captura o bloque de código de cada ejercicio.</li>
+                        <li>Captura o bloque de salida de consola de cada ejercicio.</li>
+                        <li>URL del Release <code>2.0.2</code>.</li>
+                    </ul>
+
+                    <h4>7. Commits sugeridos</h4>
+
+                    <pre class="console">ADD: Ejercicio 01 - Sign Validator en Java
+
+ADD: Ejercicio 02 - Stack Sorter en Java
+
+ADD: Ejercicio 03 - Queue Palindrome en Java
+
+ADD: README y evidencias de ejecución</pre>
+
+                    <h4>8. Creación de versión</h4>
+
+                    <pre class="console">git add .
+git commit -m "ADD: Ejercicios de estructuras lineales"
+git push
+
+git tag -a v2.0.2 -m "Estructuras Lineales – Ejercicios"
+git push origin v2.0.2</pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RESULTADO(S) OBTENIDO(S):</strong>
+
+                    <p>El estudiante debe registrar en el README.md las evidencias reales de ejecución.</p>
+
+                    <h4>Tabla de evidencias requeridas</h4>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Ejercicio</th>
+                                <th>Evidencia de código</th>
+                                <th>Evidencia de consola</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ejercicio 01: Validación de signos</td>
+                                <td>Captura o bloque Markdown del código de <code>SignValidator</code></td>
+                                <td>Salida con casos válidos e inválidos</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Ejercicio 02: Ordenar Stack</td>
+                                <td>Captura o bloque Markdown del código de <code>StackSorter</code></td>
+                                <td>Salida mostrando Stack original y Stack ordenado</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Ejercicio 03: Palíndromo usando Colas</td>
+                                <td>Captura o bloque Markdown del código de <code>QueuePalindrome</code></td>
+                                <td>Salida con casos verdaderos y falsos</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Salida esperada de referencia</h4>
+
+                    <pre class="console">Ejercicio 01: Validación de Signos
+Cadena: {[()]} | Resultado: true
+Cadena: {[(])} | Resultado: false
+
+Ejercicio 02: Ordenar Stack
+Stack original: [2, 4, 1, 5]
+Stack ordenado: [5, 4, 2, 1]
+Tope esperado: 1
+
+Ejercicio 03: Palíndromo usando Colas
+ana   | Resultado: true
+radar | Resultado: true
+java  | Resultado: false</pre>
+
+                    <p>La salida puede variar en el formato visual, pero debe demostrar claramente que cada ejercicio
+                        funciona.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>CONCLUSIONES:</strong>
+                    <p>El estudiante debe redactar al menos tres conclusiones propias relacionadas con el uso de pilas y
+                        colas.</p>
+                    <ul>
+                        <li>Conclusión 1: ________________________________________________________________</li>
+                        <li>Conclusión 2: ________________________________________________________________</li>
+                        <li>Conclusión 3: ________________________________________________________________</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RECOMENDACIONES:</strong>
+                    <ul>
+                        <li>Probar cada ejercicio con más de un caso de entrada.</li>
+                        <li>Verificar que las pruebas unitarias se ejecuten correctamente.</li>
+                        <li>Respetar los nombres de clases, métodos y paquetes solicitados.</li>
+                        <li>No modificar la lógica de las pruebas unitarias entregadas.</li>
+                        <li>Confirmar que el Release <code>2.0.2</code> exista antes de subir el enlace al AVAC.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div style="text-align: center; margin: 0 auto;">
+            <p class="signature">
+                Docente: Ing. Pablo Torres
+            </p>
+            <p>
+                Firma: _______________________________
+            </p>
+        </div>
+
+        <div class="footer">
+            <span>Formato aprobado con Res. C.S. N° 076-04-2016-04-20</span>
+            <span>Página 1 de 1</span>
+        </div>
+    </main>
+
+    <script src="../js/protection.js"></script>
+</body>
+
+</html>

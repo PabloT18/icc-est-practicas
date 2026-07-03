@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <title>Guía de práctica - Listas y matrices con funciones en Python</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
+</head>
+
+<body>
+    <main
+        class="page"
+        id="practice-content"
+    >
+        <table class="guide-table">
+            <tr>
+                <td class="logo-cell">
+                    <img
+                        src="../assets/ups-svg-plain.svg"
+                        alt="Logo UPS"
+                        class="logo-img"
+                    >
+                </td>
+                <td
+                    colspan="4"
+                    class="title-cell"
+                >
+                    FORMATO DE GUÍA DE PRÁCTICA DE LABORATORIO / TALLERES / CENTROS DE SIMULACIÓN – PARA DOCENTES
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><strong>CARRERA:</strong> Computación</td>
+                <td colspan="3"><strong>ASIGNATURA:</strong> Programación</td>
+            </tr>
+
+            <tr>
+                <td><strong>NRO. PRÁCTICA:</strong></td>
+                <td>4</td>
+                <td colspan="3">
+                    <strong>TÍTULO PRÁCTICA:</strong> Procesamiento de listas y matrices con funciones en Python
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>OBJETIVO</strong>
+                    <ul>
+                        <li>Aplicar listas y matrices en la resolución de problemas básicos de programación.</li>
+                        <li>Organizar un programa en varios archivos usando módulos de Python.</li>
+                        <li>Implementar funciones que procesen datos y retornen resultados mediante <code>return</code>.
+                        </li>
+                        <li>Separar la lógica de cálculo, datos y presentación de resultados.</li>
+                        <li>Ejecutar el programa desde un archivo principal sin solicitar datos por teclado.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="section-label">INSTRUCCIONES:</td>
+                <td
+                    colspan="4"
+                    class="section-content"
+                >
+                    <ol>
+                        <li>
+                            Desarrollar una aplicación en Python que procese listas y matrices usando funciones con
+                            <code>return</code>. El programa debe ejecutarse directamente desde <code>main.py</code>,
+                            sin usar
+                            <code>input</code> ni menú.
+                        </li>
+
+                        <li>
+                            <strong>Estructura del proyecto</strong>
+                            <p>Crear una carpeta llamada <code>practica_listas_matrices</code> y organizar el proyecto
+                                con los siguientes archivos:</p>
+
+                            <pre class="code-line">practica_listas_matrices/
+│
+├── main.py
+├── datos.py
+├── operaciones_listas.py
+├── operaciones_matrices.py
+└── reportes.py</pre>
+                        </li>
+
+                        <li>
+                            <strong>Archivos y responsabilidades</strong>
+                            <p>Cada archivo debe cumplir una responsabilidad específica dentro del programa.</p>
+
+                            <table class="rubric">
+                                <thead>
+                                    <tr>
+                                        <th>Archivo</th>
+                                        <th>Responsabilidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>datos.py</code></td>
+                                        <td>Definir funciones que retornen listas y matrices base.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>operaciones_listas.py</code></td>
+                                        <td>Implementar funciones para procesar listas.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>operaciones_matrices.py</code></td>
+                                        <td>Implementar funciones para procesar matrices.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>reportes.py</code></td>
+                                        <td>Implementar funciones encargadas únicamente de imprimir resultados.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>main.py</code></td>
+                                        <td>Importar módulos, llamar funciones y ejecutar el flujo principal.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li>
+                            <strong>Nombres obligatorios de archivos y funciones</strong>
+                            <p>Los nombres deben respetarse exactamente para mantener una estructura clara y evaluable.
+                            </p>
+
+                            <table class="rubric">
+                                <thead>
+                                    <tr>
+                                        <th>Archivo</th>
+                                        <th>Funciones obligatorias</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>datos.py</code></td>
+                                        <td><code>get_notas()</code>, <code>get_productos()</code>,
+                                            <code>get_ventas()</code>, <code>get_matriz_numeros()</code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>operaciones_listas.py</code></td>
+                                        <td><code>calcular_promedio(lista)</code>, <code>contar_aprobados(lista)</code>,
+                                            <code>obtener_mayor(lista)</code>,
+                                            <code>contar_productos_largos(productos)</code>,
+                                            <code>buscar_producto(productos, nombre)</code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>operaciones_matrices.py</code></td>
+                                        <td><code>sumar_matriz(matriz)</code>, <code>mayor_matriz(matriz)</code>,
+                                            <code>sumar_filas(matriz)</code>, <code>sumar_columnas(matriz)</code>,
+                                            <code>contar_pares_matriz(matriz)</code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>reportes.py</code></td>
+                                        <td><code>mostrar_reporte_notas(...)</code>,
+                                            <code>mostrar_reporte_productos(...)</code>,
+                                            <code>mostrar_reporte_matriz(...)</code>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li>
+                            <strong>Ejecución desde archivo principal</strong>
+                            <p>El programa debe ejecutarse desde <code>main.py</code>. Este archivo no debe contener
+                                toda la lógica del programa; solo debe obtener datos, llamar funciones y mostrar
+                                resultados.</p>
+                        </li>
+
+                        <li>
+                            <strong>Restricciones</strong>
+                            <ul>
+                                <li>No usar <code>input</code>.</li>
+                                <li>No usar menú.</li>
+                                <li>No usar librerías externas.</li>
+                                <li>No usar <code>sum</code>, <code>max</code>, <code>min</code> ni funciones
+                                    automáticas para resolver directamente la lógica principal.</li>
+                                <li>No colocar toda la solución dentro de <code>main.py</code>.</li>
+                                <li>No imprimir dentro de las funciones de operaciones.</li>
+                                <li>Las funciones de operaciones deben calcular y retornar resultados.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong>Entregables</strong>
+                            <p>Subir al AVAC todos los archivos desarrollados durante la práctica.</p>
+
+                            <ul>
+                                <li><code>main.py</code></li>
+                                <li><code>datos.py</code></li>
+                                <li><code>operaciones_listas.py</code></li>
+                                <li><code>operaciones_matrices.py</code></li>
+                                <li><code>reportes.py</code></li>
+                                <li><code>README.md</code> con la explicación general de la práctica y la evidencia de
+                                    ejecución.</li>
+                            </ul>
+
+                            <p>Los archivos pueden subirse individualmente o dentro de una carpeta comprimida llamada
+                                <code>practica_listas_matrices</code>.
+                            </p>
+                        </li>
+
+                        <li>
+                            <strong>Criterio de no calificación</strong>
+                            <ul>
+                                <li>No se calificará si el README no contiene la explicación de lo desarrollado.</li>
+                                <li>No se calificará si el programa usa <code>input</code> o menú.</li>
+                                <li>No se calificará si las funciones de operaciones imprimen en lugar de retornar
+                                    resultados.</li>
+                                <li>No se calificará si el programa no ejecuta correctamente desde <code>main.py</code>.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h3>Rúbrica</h3>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Descripción</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Estructura de archivos</td>
+                                <td>Crear correctamente los archivos <code>main.py</code>, <code>datos.py</code>,
+                                    <code>operaciones_listas.py</code>, <code>operaciones_matrices.py</code> y
+                                    <code>reportes.py</code>.
+                                </td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Importación de módulos</td>
+                                <td>Importar correctamente los módulos en <code>main.py</code> y ejecutar el flujo
+                                    principal sin errores.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Datos base</td>
+                                <td>Definir listas y matrices en <code>datos.py</code> mediante funciones que retornen
+                                    datos.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Funciones de listas</td>
+                                <td>Implementar correctamente promedio, aprobados, nota mayor, productos largos y
+                                    búsqueda de producto.</td>
+                                <td class="center">2 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Funciones de matrices</td>
+                                <td>Implementar correctamente suma total, mayor, suma por filas, suma por columnas y
+                                    conteo de pares.</td>
+                                <td class="center">2 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Ciclos y condicionales</td>
+                                <td>Usar correctamente ciclos <code>for</code> y condicionales <code>if</code> para
+                                    procesar listas y matrices.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Separación de responsabilidades</td>
+                                <td>Separar correctamente la lógica de cálculo y la lógica de impresión.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Ejecución y evidencias</td>
+                                <td>Ejecutar correctamente el programa desde <code>main.py</code> y presentar resultados
+                                    ordenados en consola y README.</td>
+                                <td class="center">1 pts</td>
+                            </tr>
+                            <tr class="subtotal">
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td class="center">10 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>ACTIVIDADES POR DESARROLLAR</h3>
+
+                    <h4>1. Crear la estructura del proyecto</h4>
+                    <p>Crear una carpeta llamada <code>practica_listas_matrices</code> con los archivos requeridos.</p>
+
+                    <pre class="code-line">practica_listas_matrices/
+│
+├── main.py
+├── datos.py
+├── operaciones_listas.py
+├── operaciones_matrices.py
+└── reportes.py</pre>
+
+                    <h4>2. Crear el archivo datos.py</h4>
+                    <p>Definir funciones que retornen las listas y matrices que usará el programa.</p>
+
+                    <pre class="code-line">def get_notas():
+    return [8, 10, 6, 9, 7, 5, 10, 4]
+
+
+def get_productos():
+    return ["mouse", "teclado", "monitor", "usb", "parlante"]
+
+
+def get_ventas():
+    return [
+        [10, 15, 12],
+        [8, 20, 14],
+        [5, 7, 9],
+        [16, 11, 13]
+    ]
+
+
+def get_matriz_numeros():
+    return [
+        [4, 7, 2],
+        [9, 1, 5],
+        [6, 3, 8]
+    ]</pre>
+
+                    <h4>3. Crear el archivo operaciones_listas.py</h4>
+                    <p>Implementar las funciones para procesar listas. Todas las funciones deben retornar resultados.
+                    </p>
+
+                    <pre class="code-line">def calcular_promedio(lista):
+    # retornar el promedio
+
+
+def contar_aprobados(lista):
+    # retornar cantidad de notas mayores o iguales a 7
+
+
+def obtener_mayor(lista):
+    # retornar la nota mayor
+
+
+def contar_productos_largos(productos):
+    # retornar cantidad de productos con más de 5 letras
+
+
+def buscar_producto(productos, nombre):
+    # retornar True si existe, caso contrario False</pre>
+
+                    <h4>4. Crear el archivo operaciones_matrices.py</h4>
+                    <p>Implementar las funciones para procesar matrices. Todas las funciones deben usar ciclos y
+                        retornar resultados.</p>
+
+                    <pre class="code-line">def sumar_matriz(matriz):
+    # retornar la suma total de todos los valores
+
+
+def mayor_matriz(matriz):
+    # retornar el número mayor de la matriz
+
+
+def sumar_filas(matriz):
+    # retornar una lista con la suma de cada fila
+
+
+def sumar_columnas(matriz):
+    # retornar una lista con la suma de cada columna
+
+
+def contar_pares_matriz(matriz):
+    # retornar la cantidad de números pares</pre>
+
+                    <h4>5. Crear el archivo reportes.py</h4>
+                    <p>Implementar funciones encargadas únicamente de imprimir resultados. Estas funciones no deben
+                        realizar cálculos principales.</p>
+
+                    Este archivo debe contener las siguientes funciones:
+                    def mostrar_reporte_notas(notas, promedio, aprobados, mayor):
+                    def mostrar_reporte_productos(productos, largos, existe):
+                    def mostrar_reporte_matriz(matriz, suma_total, mayor, suma_filas, suma_columnas, pares):
+
+                    Cada función debe imprimir los resultados de manera ordenada y clara, siguiendo el formato de salida
+                    esperado.
+
+
+                    <p>Salida esperada:</p>
+
+                    <pre class="code-line">*** REPORTE DE NOTAS ***
+Notas: [8, 10, 6, 9, 7, 5, 10, 4]
+Promedio: 7.375
+Aprobados: 5
+Nota mayor: 10
+
+*** REPORTE DE PRODUCTOS ***
+Productos: ['mouse', 'teclado', 'monitor', 'usb', 'parlante']
+Productos con más de 5 letras: 3
+Existe el producto buscado: True
+
+*** REPORTE DE MATRIZ ***
+Matriz: [[10, 15, 12], [8, 20, 14], [5, 7, 9], [16, 11, 13]]
+Suma total: 140
+Número mayor: 20
+Suma por filas: [37, 42, 21, 40]
+Suma por columnas: [39, 53, 48]
+Cantidad de pares: 5</pre>
+
+                    <h4>6. Ejecutar todo desde main.py</h4>
+                    <p>El archivo <code>main.py</code> debe importar los demás archivos, llamar las funciones y mostrar
+                        los reportes.</p>
+
+
+
+                    <h4>7. Actividad adicional</h4>
+                    <p>Agregar una matriz de asistencias en <code>datos.py</code>.</p>
+
+                    <pre class="code-line">def get_asistencias():
+    return [
+        [1, 1, 0, 1, 1],
+        [1, 0, 0, 1, 1],
+        [1, 1, 1, 1, 0]
+    ]</pre>
+
+                    <p>Crear las siguientes funciones en <code>operaciones_matrices.py</code>:</p>
+
+                    <pre class="code-line">def contar_asistencias(matriz):
+    # retornar cantidad de valores iguales a 1
+
+
+def contar_faltas(matriz):
+    # retornar cantidad de valores iguales a 0</pre>
+
+                    <p>Mostrar el reporte correspondiente desde <code>main.py</code>.</p>
+
+
+                    <h4>9. Indicaciones de entrega en AVAC</h4>
+                    <p>Subir todos los archivos desarrollados. Verificar que el programa se pueda ejecutar desde
+                        <code>main.py</code> antes de realizar la entrega.
+                    </p>
+
+                    <ul>
+                        <li>Subir <code>main.py</code>, <code>datos.py</code>, <code>operaciones_listas.py</code>,
+                            <code>operaciones_matrices.py</code>, <code>reportes.py</code>
+                        </li>
+
+
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RESULTADO(S) OBTENIDO(S):</strong>
+
+                    <p>El estudiante debe registrar en el README.md las evidencias reales de ejecución.</p>
+
+                    <h4>Tabla de evidencias requeridas</h4>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Archivo</th>
+                                <th>Evidencia de código</th>
+                                <th>Evidencia de consola</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>datos.py</code></td>
+                                <td>Captura o bloque Markdown con las funciones que retornan datos.</td>
+                                <td>No aplica.</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>operaciones_listas.py</code></td>
+                                <td>Captura o bloque Markdown con las funciones de listas.</td>
+                                <td>Resultados del reporte de notas y productos.</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>operaciones_matrices.py</code></td>
+                                <td>Captura o bloque Markdown con las funciones de matrices.</td>
+                                <td>Resultados del reporte de matriz.</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>main.py</code></td>
+                                <td>Captura o bloque Markdown del archivo principal.</td>
+                                <td>Salida completa de ejecución.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Salida esperada de referencia</h4>
+
+                    <pre class="console">*** REPORTE DE NOTAS ***
+Notas: [8, 10, 6, 9, 7, 5, 10, 4]
+Promedio: 7.375
+Aprobados: 5
+Nota mayor: 10
+
+*** REPORTE DE PRODUCTOS ***
+Productos: ['mouse', 'teclado', 'monitor', 'usb', 'parlante']
+Productos con más de 5 letras: 3
+Existe el producto buscado: True
+
+*** REPORTE DE MATRIZ ***
+Matriz: [[10, 15, 12], [8, 20, 14], [5, 7, 9], [16, 11, 13]]
+Suma total: 140
+Número mayor: 20
+Suma por filas: [37, 42, 21, 40]
+Suma por columnas: [39, 53, 48]
+Cantidad de pares: 5</pre>
+
+                    <p>La salida puede variar en el formato visual, pero debe demostrar claramente que las funciones
+                        calculan y retornan los resultados correctamente.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>CONCLUSIONES:</strong>
+                    <p>El estudiante debe redactar al menos tres conclusiones propias relacionadas con el uso de listas,
+                        matrices, ciclos, condicionales y funciones con retorno.</p>
+                    <ul>
+                        <li>Conclusión 1: ________________________________________________________________</li>
+                        <li>Conclusión 2: ________________________________________________________________</li>
+                        <li>Conclusión 3: ________________________________________________________________</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RECOMENDACIONES:</strong>
+                    <ul>
+                        <li>Ejecutar el programa únicamente desde <code>main.py</code>.</li>
+                        <li>Verificar que todas las funciones de operaciones usen <code>return</code>.</li>
+                        <li>Separar correctamente datos, operaciones y reportes.</li>
+                        <li>Probar los cálculos antes de registrar las evidencias en el README.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div style="text-align: center; margin: 0 auto;">
+            <p class="signature">
+                Docente: Ing. Pablo Torres
+            </p>
+            <p>
+                Firma: _______________________________
+            </p>
+        </div>
+
+        <div class="footer">
+            <span>Formato aprobado con Res. C.S. N° 076-04-2016-04-20</span>
+            <span>Página 1 de 1</span>
+        </div>
+    </main>
+
+    <script src="../js/protection.js"></script>
+</body>
+
+</html>

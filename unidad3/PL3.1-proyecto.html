@@ -118,8 +118,8 @@
                             <ul>
                                 <li>Los nodos representan intersecciones.</li>
                                 <li>Las aristas representan calles que conectan intersecciones.</li>
-                                <li>El nodo A representa el punto de inicio.</li>
-                                <li>El nodo B representa el punto de destino.</li>
+                                <li>El punto seleccionado como inicio cumple el rol de punto A.</li>
+                                <li>El punto seleccionado como destino cumple el rol de punto B.</li>
                             </ul>
                         </li>
 
@@ -196,8 +196,9 @@
                                 <li>Recibir el grafo, el nodo de inicio y el nodo de destino.</li>
                                 <li>Controlar correctamente los nodos visitados.</li>
                                 <li>Evitar ciclos y llamadas recursivas infinitas.</li>
-                                <li>Registrar los nodos predecesores.</li>
-                                <li>Reconstruir y devolver una ruta válida cuando exista.</li>
+                                <li>Mantener la ruta actual durante la recursividad o mediante una pila.</li>
+                                <li>Aplicar retroceso cuando una rama no conduce al destino.</li>
+                                <li>Devolver una ruta válida cuando exista.</li>
                                 <li>Permitir observar la exploración en profundidad.</li>
                             </ul>
                         </li>
@@ -258,27 +259,7 @@
                             </p>
                         </li>
 
-                        <li>
-                            <strong>Registro de tiempos</strong>
 
-                            <p>
-                                Cada ejecución de BFS y DFS debe medirse mediante <code>System.nanoTime()</code>. Los
-                                resultados deben almacenarse en un archivo CSV para su posterior análisis.
-                            </p>
-
-                            <p>El archivo debe registrar como mínimo:</p>
-
-                            <ul>
-                                <li>Algoritmo ejecutado.</li>
-                                <li>Nodo de inicio.</li>
-                                <li>Nodo de destino.</li>
-                                <li>Cantidad de nodos visitados.</li>
-                                <li>Cantidad de nodos de la ruta.</li>
-                                <li>Tiempo en nanosegundos.</li>
-                                <li>Tiempo en milisegundos.</li>
-                                <li>Fecha y hora de ejecución.</li>
-                            </ul>
-                        </li>
 
                         <li>
                             <strong>Pruebas del sistema</strong>
@@ -369,7 +350,7 @@
                             <strong>Consideraciones generales</strong>
 
                             <ul>
-                                <li>El proyecto puede realizarse en los grupos definidos por el docente.</li>
+                                <li>El proyecto puede realizarse en los grupos definidos.</li>
                                 <li>Todos los integrantes deben participar en el desarrollo y la presentación.</li>
                                 <li>El proyecto debe compilar y ejecutarse sin errores críticos.</li>
                                 <li>No se permite reemplazar BFS o DFS por algoritmos incluidos en librerías externas.
@@ -379,6 +360,8 @@
                                 </li>
                                 <li>La interfaz debe mantener proporciones adecuadas al redimensionar la ventana.</li>
                                 <li>Las conclusiones deben relacionarse con los resultados obtenidos.</li>
+                                <li>El repositorio de GitHub debe tener a todos los miembros como colaboradores y todos
+                                    deberan tener aportes al codigo</li>
                             </ul>
                         </li>
                     </ol>
@@ -398,6 +381,7 @@
                         <li>Archivo <code>README.md</code> como informe técnico.</li>
                         <li>Ejecutable JAR.</li>
                         <li>Video demostrativo en formato MP4.</li>
+                        <li>Aportes de commits de todos los miembros del proyecto</li>
                     </ul>
 
                     <h3>RÚBRICA DE CALIFICACIÓN</h3>
@@ -467,6 +451,9 @@
                         </tbody>
                     </table>
 
+                    <p>En la primera rubrica se penalizara si no tiene aportes de commits en el desarollo del proyecto
+                    </p>
+
                     <h4>2. Documentación y presentación – 20 puntos</h4>
 
                     <table class="rubric">
@@ -512,35 +499,7 @@
                         </tbody>
                     </table>
 
-                    <h4>Escala general de desempeño</h4>
 
-                    <table class="rubric">
-                        <thead>
-                            <tr>
-                                <th>Rango de puntaje</th>
-                                <th>Nivel de desempeño</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="center">0 – 24 pts</td>
-                                <td>Deficiente</td>
-                            </tr>
-                            <tr>
-                                <td class="center">25 – 34 pts</td>
-                                <td>Básico</td>
-                            </tr>
-                            <tr>
-                                <td class="center">35 – 44 pts</td>
-                                <td>Bueno</td>
-                            </tr>
-                            <tr>
-                                <td class="center">45 – 50 pts</td>
-                                <td>Muy bueno / Excelente</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </td>
             </tr>
 
@@ -560,7 +519,11 @@
 
                     <h4>2. Crear la estructura del proyecto</h4>
 
-                    <p>Se recomienda utilizar una estructura similar a la siguiente:</p>
+                    <p>
+                        La estructura debe conservar las clases genéricas de grafos trabajadas en clase y agregar
+                        únicamente las capas necesarias para representar el mapa, guardar la configuración y construir
+                        la interfaz.
+                    </p>
 
                     <pre class="code-line">src/
 ├── app/
@@ -568,110 +531,151 @@
 ├── controllers/
 │   └── MapController.java
 ├── models/
-│   ├── Graph.java
 │   ├── MapPoint.java
-│   ├── Edge.java
-│   ├── PathResult.java
 │   └── VisualizationMode.java
-├── algorithms/
-│   ├── BFSPathFinder.java
-│   └── DFSPathFinder.java
 ├── persistence/
 │   ├── GraphRepository.java
 │   └── FileGraphRepository.java
-├── services/
-│   ├── GraphService.java
-│   └── BenchmarkService.java
+├── structures/
+│   ├── node/
+│   │   └── Node.java
+│   └── graphs/
+│       ├── Graph.java
+│       ├── PathFinder.java
+│       ├── PathResult.java
+│       └── implementations/
+│           ├── BFSPathFinder.java
+│           └── DFSPathFinder.java
 ├── views/
 │   ├── MainFrame.java
 │   └── MapPanel.java
-└── utils/
-    └── CsvWriter.java
-
 resources/
 ├── maps/
 │   └── map.png
-└── config/
-    └── graph.json</pre>
+</pre>
 
                     <p>
-                        Los nombres pueden variar, pero deben mantenerse responsabilidades separadas y una organización
-                        coherente.
+                        No es obligatorio tener esta estructura pero si explicar con la estructura final realizadaa.
                     </p>
 
-                    <h4>3. Implementar el modelo del grafo</h4>
+                    <h4>3. Implementar el punto del mapa y utilizar el grafo genérico</h4>
 
                     <p>
-                        Crear las clases necesarias para representar nodos, aristas, conexiones, rutas y resultados.
-                        Cada nodo debe disponer como mínimo de:
+                        Cada punto colocado sobre la imagen debe representarse mediante un objeto
+                        <code>MapPoint</code>. Este objeto será el valor genérico almacenado dentro del grafo:
+                        <code>Graph&lt;MapPoint&gt;</code>.
                     </p>
 
-                    <ul>
-                        <li>Identificador único.</li>
-                        <li>Coordenada horizontal.</li>
-                        <li>Coordenada vertical.</li>
-                        <li>Lista o conjunto de nodos adyacentes.</li>
-                    </ul>
+                    <p>La correspondencia utilizada en el proyecto será:</p>
 
+                    <pre class="code-line">Punto del mapa              MapPoint
+Vértice interno             Node&lt;MapPoint&gt;
+Conjunto de conexiones      Set&lt;Node&lt;MapPoint&gt;&gt;
+Calle entre dos puntos      Arista del grafo
+Calle bidireccional         addEdge
+Calle de un solo sentido    addEdgeUni</pre>
+
+                    <p>
+                        La clase <code>MapPoint</code> debe almacenar únicamente la información propia del punto. Las
+                        conexiones no deben guardarse dentro de esta clase, porque son responsabilidad de
+                        <code>Graph</code>.
+                    </p>
 
                     <pre class="code-line">package models;
-
 public class MapPoint {
+
     private String id;
     private int x;
     private int y;
+
 }</pre>
 
                     <p>
-                        En este proyecto, cada punto colocado sobre el mapa puede ser el valor almacenado dentro del
-                        grafo.
-
-                        <code>Graph\<MapPoint\></code>
-                        La representación sería:
+                        <code>equals()</code> y <code>hashCode()</code> deben utilizar únicamente
+                        <code>id</code>. De esta manera, dos instancias con el mismo identificador representan el mismo
+                        punto lógico del mapa.
                     </p>
 
-                    <pre class="code-line">
-Punto del mapa              Vértice del grafo
-Calle entre dos puntos      Arista del grafo
-Calle bidireccional         addEdge
-Calle de un solo sentido    addEdgeUni
-}</pre>
+                    <pre class="code-line">MapPoint pointA1 = new MapPoint("A", 100, 200);
+MapPoint pointA2 = new MapPoint("A", 100, 200);
 
+System.out.println(pointA1.equals(pointA2)); // true</pre>
 
-                    Aquí equals() y hashCode() utilizan únicamente id.
+                    <p>El grafo del mapa se declarará y construirá de la siguiente manera:</p>
 
-                    Esto permite que dos objetos como estos representen el mismo punto del grafo:
+                    <pre class="code-line">Graph&lt;MapPoint&gt; mapGraph = new Graph&lt;&gt;();
 
-                    new MapPoint("A", 100, 200);
-                    new MapPoint("A", 100, 200);
+MapPoint pointA = new MapPoint("A", 100, 120);
+MapPoint pointB = new MapPoint("B", 250, 130);
+MapPoint pointC = new MapPoint("C", 180, 260);
+MapPoint pointD = new MapPoint("D", 400, 250);
 
-                    Aunque sean instancias diferentes, ambos representan el punto A.
+mapGraph.addEdge(pointA, pointB);
+mapGraph.addEdge(pointA, pointC);
+mapGraph.addEdge(pointB, pointD);
+mapGraph.addEdge(pointC, pointD);</pre>
 
+                    <p>La representación conceptual sería:</p>
 
+                    <pre class="code-line">A ───── B
+│       │
+│       │
+C ───── D</pre>
 
-                    La representación conceptual sería:
+                    <p>Las coordenadas permiten dibujar cada punto sobre la imagen:</p>
 
-                    <pre class="code-line">
-A ───── B
-|       |
-|       |
-C ───── D
-                    </pre>
-
-                    Las coordenadas permiten ubicar cada punto sobre la imagen:
-                    <pre class="code-line">
-A = 100, 120
+                    <pre class="code-line">A = 100, 120
 B = 250, 130
 C = 180, 260
 D = 400, 250</pre>
-                    El grafo administra tanto los puntos como sus conexiones.
 
+                    <p>
+                        La clase <code>Node&lt;T&gt;</code> también debe implementar correctamente
+                        <code>equals()</code> y <code>hashCode()</code> utilizando su valor. Esto es necesario porque
+                        <code>Graph</code> crea nuevos objetos <code>Node&lt;T&gt;</code> para consultar las claves del
+                        <code>HashMap</code>.
+                    </p>
+
+                    <p>
+                        Para que la interfaz pueda dibujar todos los puntos y todas las calles, se deben agregar a
+                        <code>Graph</code> métodos de consulta que no modifiquen directamente la estructura:
+                    </p>
+
+                    <pre class="code-line">public Set&lt;Node&lt;T&gt;&gt; getNodes() {
+    return graph.keySet();
+}
+
+public Map&lt;Node&lt;T&gt;, Set&lt;Node&lt;T&gt;&gt;&gt; getGraph() {
+    return graph;
+}
+
+public boolean contains(T data) {
+    return graph.containsKey(new Node&lt;T&gt;(data));
+}</pre>
+
+                    <p>
+                        Se recomienda utilizar <code>LinkedHashMap</code> y <code>LinkedHashSet</code> en lugar de
+                        <code>HashMap</code> y <code>HashSet</code> cuando se requiera conservar un orden de recorrido
+                        reproducible para la visualización de BFS y DFS.
+                    </p>
+
+                    <p>Tambien metodos de eliminación</p>
+
+                    <pre class="code-line">remove(T data)
+removeEdge(T v1, T v2)
+removeEdgeUni(T v1, T v2)</pre>
 
                     <h4>4. Implementar la persistencia</h4>
 
                     <p>
                         Crear una clase responsable de guardar y cargar la configuración. El controlador y los
                         algoritmos no deben leer directamente el archivo.
+                    </p>
+
+                    <p>
+                        La persistencia debe reconstruir objetos <code>MapPoint</code> y posteriormente agregarlos al
+                        objeto <code>Graph&lt;MapPoint&gt;</code> mediante <code>add()</code>,
+                        <code>addEdge()</code> o <code>addEdgeUni()</code>.
                     </p>
 
                     <p>Ejemplo conceptual de configuración:</p>
@@ -683,66 +687,96 @@ D = 400, 250</pre>
     { "id": "C", "x": 470, "y": 220 }
   ],
   "edges": [
-    { "from": "A", "to": "B" },
-    { "from": "B", "to": "C" }
+    { "from": "A", "to": "B", "bidirectional": true },
+    { "from": "B", "to": "C", "bidirectional": false }
   ]
 }</pre>
+
                     <p>
-                        Puede utilizar otras maneras de guardar la informción, con que sea en texto plano y pueda ser
-                        leído y
-                        reconstruido el grafo es suficiente.
+                        Puede utilizarse otro formato de texto plano. El requisito es que la información pueda
+                        guardarse, leerse y utilizarse para reconstruir el mismo grafo al iniciar la aplicación.
                     </p>
 
                     <h4>5. Implementar BFS</h4>
 
                     <p>
-                        Crear una clase independiente para BFS. El algoritmo debe utilizar una cola, un conjunto de
-                        visitados y un mapa de predecesores.
+                        Crear <code>BFSPathFinder&lt;T&gt;</code> implementando la interfaz
+                        <code>PathFinder&lt;T&gt;</code>. El algoritmo debe utilizar una cola, una estructura para
+                        controlar visitados y un mapa de predecesores para reconstruir la ruta.
                     </p>
 
-                    <pre class="code-line">public PathResult findPath(
-        Graph graph,
-        String startId,
-        String targetId
-) {
-    // Implementar BFS.
-    // Registrar visitados.
-    // Registrar predecesores.
-    // Reconstruir la ruta.
+                    <pre class="code-line">public class BFSPathFinder&lt;T&gt; implements PathFinder&lt;T&gt; {
+
+    @Override
+    public PathResult&lt;T&gt; find(
+            Graph&lt;T&gt; graph,
+            T start,
+            T end
+    ) {
+        // Implementar BFS.
+        // Registrar el orden de visita.
+        // Registrar predecesores.
+        // Reconstruir la ruta.
+    }
 }</pre>
+
+                    <p>En el proyecto se utilizará mediante el tipo <code>MapPoint</code>:</p>
+
+                    <pre class="code-line">PathFinder&lt;MapPoint&gt; bfs = new BFSPathFinder&lt;&gt;();
+
+PathResult&lt;MapPoint&gt; result =
+        bfs.find(mapGraph, pointA, pointD);</pre>
 
                     <h4>6. Implementar DFS</h4>
 
                     <p>
-                        Crear una clase independiente para DFS. Puede utilizarse recursividad o una pila explícita. La
-                        implementación debe evitar volver a visitar nodos.
+                        Crear <code>DFSPathFinder&lt;T&gt;</code> implementando la misma interfaz. Puede utilizarse
+                        recursividad o una pila explícita. La implementación debe evitar volver a visitar nodos y
+                        aplicar retroceso cuando una rama no conduce al destino.
                     </p>
 
-                    <pre class="code-line">public PathResult findPath(
-        Graph graph,
-        String startId,
-        String targetId
-) {
-    // Implementar DFS.
-    // Evitar ciclos.
-    // Registrar el orden de exploración.
-    // Reconstruir la ruta.
+                    <pre class="code-line">public class DFSPathFinder&lt;T&gt; implements PathFinder&lt;T&gt; {
+
+    @Override
+    public PathResult&lt;T&gt; find(
+            Graph&lt;T&gt; graph,
+            T start,
+            T end
+    ) {
+        // Implementar DFS.
+        // Registrar el orden de visita.
+        // Mantener la ruta actual.
+        // Aplicar retroceso.
+    }
 }</pre>
 
-                    <h4>7. Reconstruir la ruta</h4>
+                    <p>En el proyecto se utilizará mediante el tipo <code>MapPoint</code>:</p>
+
+                    <pre class="code-line">PathFinder&lt;MapPoint&gt; dfs = new DFSPathFinder&lt;&gt;();
+
+PathResult&lt;MapPoint&gt; result =
+        dfs.find(mapGraph, pointA, pointD);</pre>
+
+                    <h4>7. Representar los visitados y la ruta</h4>
 
                     <p>
-                        Cuando se encuentre el destino, se debe reconstruir la ruta utilizando el mapa de predecesores.
-                        El resultado debe devolverse en orden desde el nodo de inicio hasta el nodo destino.
+                        La clase <code>PathResult&lt;T&gt;</code> trabajada en clase contiene dos conjuntos:
+                        <code>visitados</code> y <code>path</code>. Para conservar el orden de inserción deben
+                        construirse mediante la implementación de <code>Set</code> adecuada.
                     </p>
 
-                    <p>El objeto de resultado debe contener como mínimo:</p>
+                    <p>
+                        En BFS, la ruta debe reconstruirse mediante el mapa de predecesores y agregarse al conjunto en
+                        orden desde el inicio hasta el destino. En DFS, la ruta puede mantenerse durante la recursividad
+                        y eliminar el último elemento cuando se realiza el retroceso.
+                    </p>
+
+                    <p>El resultado debe permitir obtener como mínimo:</p>
 
                     <ul>
-                        <li>Indicador de ruta encontrada.</li>
-                        <li>Lista ordenada de nodos visitados.</li>
-                        <li>Lista ordenada de nodos que forman la ruta final.</li>
-                        <li>Mensaje de resultado o error.</li>
+                        <li>El orden de los puntos visitados.</li>
+                        <li>Los puntos que forman la ruta encontrada.</li>
+                        <li>Un conjunto vacío cuando no existe una ruta.</li>
                     </ul>
 
                     <h4>8. Implementar los modos de visualización</h4>
@@ -758,6 +792,9 @@ public enum VisualizationMode {
                         En modo <code>EXPLORATION</code>, la vista debe recibir eventos por cada nodo visitado. En modo
                         <code>FINAL_PATH</code>, la vista debe recibir únicamente la ruta reconstruida cuando finalice
                         el algoritmo.
+
+                        Esto es una propuesta de solución para los modos de visualización. Puede implementarse de otra
+                        manera, siempre que se cumpla con la funcionalidad solicitada.
                     </p>
 
                     <h4>9. Crear la interfaz gráfica</h4>
@@ -765,7 +802,7 @@ public enum VisualizationMode {
                     <p>La interfaz debe incluir como mínimo:</p>
 
                     <ul>
-                        <li>Área para mostrar el mapa.</li>
+                        <li>Área para mostrar el mapaa.</li>
                         <li>Representación visual de nodos y aristas.</li>
                         <li>Selector de nodo inicial.</li>
                         <li>Selector de nodo destino.</li>
@@ -773,36 +810,39 @@ public enum VisualizationMode {
                         <li>Selector de modo de visualización.</li>
                         <li>Botón para ejecutar la búsqueda.</li>
                         <li>Botón para limpiar el recorrido.</li>
-                        <li>Área para mostrar tiempo, nodos visitados y longitud de la ruta.</li>
-                        <li>Tabla comparativa de ejecuciones.</li>
                     </ul>
-
-                    <h4>10. Registrar los tiempos de ejecución</h4>
-
                     <p>
-                        Medir exclusivamente el tiempo requerido por el algoritmo. No se debe incluir el tiempo de
-                        animación ni el tiempo de dibujo de la interfaz.
+                        La visualización del resultado dependerá del modo seleccionado:
+                        <code>EXPLORATION</code> o <code>FINAL_PATH</code>.
                     </p>
 
-                    <pre class="code-line">long start = System.nanoTime();
+                    <ul>
+                        <li>
+                            <strong>EXPLORATION:</strong>
+                            se visualizará paso a paso el recorrido de todos los nodos visitados. Una vez finalizada la
+                            exploración, se resaltará con una animación la ruta final encontrada entre el nodo de inicio
+                            y el nodo de destino.
+                        </li>
+                        <li>
+                            <strong>FINAL_PATH:</strong>
+                            se mostrará únicamente la ruta final encontrada, utilizando una animación progresiva desde
+                            el nodo de inicio hasta el nodo de destino.
+                        </li>
+                    </ul>
 
-PathResult result = pathFinder.findPath(graph, startId, targetId);
-
-long end = System.nanoTime();
-long elapsedNanos = end - start;
-double elapsedMillis = elapsedNanos / 1_000_000.0;</pre>
-
-                    <p>Formato sugerido del archivo CSV:</p>
-
-                    <pre class="console">timestamp,algorithm,start,target,visited,pathLength,nanos,millis
-2026-07-13T10:30:00,BFS,A,H,12,6,154200,0.1542
-2026-07-13T10:31:00,DFS,A,H,18,9,183600,0.1836</pre>
-
-                    <h4>11. Ejecutar pruebas funcionales</h4>
+                    <h4>10. Ejecutar pruebas funcionales</h4>
 
                     <p>Realizar como mínimo las siguientes pruebas:</p>
 
                     <ol>
+                        <li>Agregar nodo</li>
+                        <li>Evitar identificadores repetidos</li>
+                        <li>Eliminar nodo y sus conexiones</li>
+                        <li>Agregar arista bidireccional</li>
+                        <li>Agregar arista unidireccional</li>
+                        <li>Eliminar arista</li>
+                        <li>Guardar y volver a cargar</li>
+                        <li>Redimensionar la ventana</li>
                         <li>Ruta directa entre dos nodos conectados.</li>
                         <li>Ruta con varios nodos intermedios.</li>
                         <li>Grafo con varias rutas posibles.</li>
@@ -813,6 +853,7 @@ double elapsedMillis = elapsedNanos / 1_000_000.0;</pre>
                         <li>Ejecución en modo ruta final.</li>
                         <li>Carga de configuración válida.</li>
                         <li>Carga de configuración con errores.</li>
+
                     </ol>
 
                     <h4>12. Comparar BFS y DFS</h4>
@@ -885,7 +926,7 @@ double elapsedMillis = elapsedNanos / 1_000_000.0;</pre>
                                 <th>Inicio</th>
                                 <th>Destino</th>
                                 <th>Nodos visitados</th>
-                                <th>Longitud de ruta</th>
+                                <th>Cantidad de aristas</th>
                                 <th>Tiempo</th>
                             </tr>
                         </thead>
@@ -948,69 +989,6 @@ double elapsedMillis = elapsedNanos / 1_000_000.0;</pre>
                         </tbody>
                     </table>
 
-                    <h4>Tabla 2. Verificación funcional</h4>
-
-                    <table class="rubric">
-                        <thead>
-                            <tr>
-                                <th>Funcionalidad</th>
-                                <th>Resultado esperado</th>
-                                <th>Cumple</th>
-                                <th>Evidencia</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Carga del mapa</td>
-                                <td>La imagen se muestra correctamente.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Carga del grafo</td>
-                                <td>Los nodos y conexiones se reconstruyen desde el archivo.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>BFS</td>
-                                <td>Encuentra una ruta válida y muestra la exploración por niveles.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>DFS</td>
-                                <td>Encuentra una ruta válida y muestra la exploración en profundidad.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Modo exploración</td>
-                                <td>Se visualizan progresivamente los nodos visitados.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Modo ruta final</td>
-                                <td>Se visualiza únicamente la ruta reconstruida.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Archivo CSV</td>
-                                <td>Las ejecuciones se registran correctamente.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Manejo sin ruta</td>
-                                <td>El sistema informa que no existe una ruta sin generar errores.</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
 
                     <h4>Análisis requerido</h4>
 

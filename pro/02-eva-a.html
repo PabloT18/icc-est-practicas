@@ -288,14 +288,29 @@ Posición [0][3] → "3-I"</pre>
 
                     <pre class="code-line">" nombre ; edad ; tecnologia "</pre>
 
+                    <pre class="code-line">
+registros = [
+" ana torres ; 19 ; python ",
+" bruno mora ; 17 ; java ",
+" carla paz ; 25 ; python "
+]
+                    </pre>
 
 
                     <p>Ejemplo de transformación:</p>
 
                     <pre class="code-line">" ana torres ; 19 ; python "
 ↓
-["Ana Torres", 19, "PYTHON"]</pre>
+[["Ana Torres", 19, "PYTHON"],...]</pre>
 
+                    <p>Resultado Eserado</p>
+
+                    <pre class="console">*** REGISTROS PROCESADOS ***
+[
+    ["Ana Torres", 19, "PYTHON"],
+    ["Bruno Mora", 17, "JAVA"],
+    ["Carla Paz", 25, "PYTHON"]
+]</pre>
                     <h4>4. Filtrar y ordenar registros</h4>
 
                     <p>
@@ -304,17 +319,11 @@ Posición [0][3] → "3-I"</pre>
 
                     <pre class="code-line">def filtrar_registros(lista, tecnologia_buscada):</pre>
 
-                    <p>Realizar las siguientes acciones:</p>
+                    <pre
+                        class="code-line">lista = [ ["Ana Torres", 19, "PYTHON"], ["Bruno Mora", 17, "JAVA"], ["Carla Paz", 25, "PYTHON"], ["Diego León", 31, "JAVASCRIPT"], ["Elena Ruiz", 22, "PYTHON"] ] tecnologia_buscada = "python"</pre>
 
-                    <ol>
-                        <li>Recorrer la lista procesada.</li>
-                        <li>Seleccionar únicamente personas con edad mayor o igual a <code>18</code>.</li>
-                        <li>Comparar la tecnología sin distinguir mayúsculas y minúsculas mediante <code>lower()</code>.
-                        </li>
-                        <li>Agregar únicamente los nombres que cumplan ambas condiciones.</li>
-                        <li>Ordenar alfabéticamente la lista mediante <code>sort()</code>.</li>
-                        <li>Retornar la lista de nombres.</li>
-                    </ol>
+                    <pre class="console">*** REGISTROS ESPERADOS ***
+[ "Ana Torres", "Carla Paz", "Elena Ruiz" ]</pre>
 
                     <h4>5. Integrar el programa</h4>
 

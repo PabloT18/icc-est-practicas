@@ -1,0 +1,420 @@
+from pathlib import Path
+
+html = r'''
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <title>Lección de Python - Listas, matrices y funciones</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
+</head>
+
+<body>
+    <main
+        class="page"
+        id="practice-content"
+    >
+        <table class="guide-table">
+            <tr>
+                <td class="logo-cell">
+                    <img
+                        src="../assets/ups-svg-plain.svg"
+                        alt="Logo UPS"
+                        class="logo-img"
+                    >
+                </td>
+                <td
+                    colspan="4"
+                    class="title-cell"
+                >
+                    FORMATO DE GUÍA DE PRÁCTICA DE LABORATORIO / TALLERES / CENTROS DE SIMULACIÓN – PARA DOCENTES
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><strong>CARRERA:</strong> Computación</td>
+                <td colspan="3"><strong>ASIGNATURA:</strong> Programación</td>
+            </tr>
+
+            <tr>
+                <td><strong>NRO. LECCIÓN:</strong></td>
+                <td>Final</td>
+                <td colspan="3">
+                    <strong>TÍTULO:</strong> Listas, matrices y funciones en Python
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>OBJETIVO</strong>
+                    <ul>
+                        <li>Crear matrices mediante ciclos <code>for</code> anidados.</li>
+                        <li>Aplicar condiciones para generar valores según números pares e impares.</li>
+                        <li>Procesar listas mediante métodos de cadenas y métodos de listas.</li>
+                        <li>Organizar la solución mediante funciones que reciban parámetros y retornen resultados.</li>
+                        <li>Integrar todo el programa dentro de un único archivo Python.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="section-label">INSTRUCCIONES:</td>
+                <td
+                    colspan="4"
+                    class="section-content"
+                >
+                    <ol>
+                        <li>
+                            Desarrollar la lección en un único archivo llamado:
+                            <pre class="code-line">nombre_apellido_leccion.py</pre>
+                        </li>
+
+                        <li>
+                            Implementar exactamente las siguientes cuatro funciones:
+                            <table class="rubric">
+                                <thead>
+                                    <tr>
+                                        <th>N.°</th>
+                                        <th>Función obligatoria</th>
+                                        <th>Responsabilidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="center">1</td>
+                                        <td><code>crear_matriz(filas, columnas)</code></td>
+                                        <td>Crear y retornar una matriz usando ciclos <code>for</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">2</td>
+                                        <td><code>mostrar_matriz(matriz)</code></td>
+                                        <td>Imprimir la matriz con el formato solicitado.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">3</td>
+                                        <td><code>procesar_registros(registros)</code></td>
+                                        <td>Separar, limpiar y transformar los datos de una lista de cadenas.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">4</td>
+                                        <td><code>filtrar_registros(lista, tecnologia_buscada)</code></td>
+                                        <td>Filtrar, ordenar y retornar los nombres que cumplan las condiciones.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li>
+                            Definir los siguientes datos dentro del bloque principal:
+                            <pre class="code-line">filas = 3
+columnas = 4
+
+registros = [
+    " ana torres ; 19 ; python ",
+    " bruno mora ; 17 ; java ",
+    " carla paz ; 25 ; python ",
+    " diego león ; 31 ; javascript ",
+    " elena ruiz ; 22 ; PYTHON ",
+    " fabio solís ; 16 ; python "
+]
+
+tecnologia_buscada = "python"</pre>
+                        </li>
+
+
+
+                        <li>
+                            Respetar las siguientes restricciones:
+                            <ul>
+                                <li>No usar <code>input</code>.</li>
+                                <li>No usar librerías externas.</li>
+                                <li>No usar comprensión de listas.</li>
+                                <li>No usar <code>sum</code>, <code>max</code> ni <code>min</code>.</li>
+                                <li>No cambiar los nombres de las funciones.</li>
+                                <li>No crear funciones adicionales.</li>
+                                <li>Usar ciclos <code>for</code>, condicionales y métodos básicos de listas y cadenas.
+                                </li>
+                                <li>Retornar los resultados solicitados mediante <code>return</code>.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Verificar que el archivo ejecute completamente antes de realizar la entrega.
+                        </li>
+
+                        <li>
+                            Subir el archivo <code>nombre_apellido_leccion.py</code> a la actividad correspondiente en
+                            AVAC.
+                        </li>
+                    </ol>
+
+                    <h3>RÚBRICA</h3>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Descripción</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Estructura y ejecución</td>
+                                <td>Entregar un único archivo, respetar el bloque principal y ejecutar sin errores.</td>
+                                <td class="center">1.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Crear matriz</td>
+                                <td>Construir correctamente la matriz mediante ciclos <code>for</code> anidados y
+                                    retornar el resultado.</td>
+                                <td class="center">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Mostrar matriz</td>
+                                <td>Imprimir todas las filas sin corchetes ni comas y respetar el formato solicitado.
+                                </td>
+                                <td class="center">1.5 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Procesar registros</td>
+                                <td>Aplicar correctamente <code>split</code>, <code>strip</code>, <code>title</code>,
+                                    <code>upper</code> y <code>append</code>.
+                                </td>
+                                <td class="center">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Filtrar registros</td>
+                                <td>Aplicar las condiciones de edad y tecnología, agregar los nombres y ordenar el
+                                    resultado.</td>
+                                <td class="center">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Integración y salida</td>
+                                <td>Llamar las cuatro funciones y mostrar los resultados de forma clara y ordenada.</td>
+                                <td class="center">1.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Calidad del código</td>
+                                <td>Usar nombres claros, indentación correcta y evitar código repetido.</td>
+                                <td class="center">0.5 pts</td>
+                            </tr>
+                            <tr class="subtotal">
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td class="center">10 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Criterio de no calificación:</strong>
+                        asignar una calificación de <strong>0/10</strong> cuando el programa no ejecute.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>ACTIVIDADES POR DESARROLLAR</h3>
+
+                    <h4>1. Crear la matriz</h4>
+
+                    <p>
+                        Implementar la función:
+                    </p>
+
+                    <pre class="code-line">def crear_matriz(filas, columnas):</pre>
+
+                    <p>Realizar las siguientes acciones:</p>
+
+                    <ol>
+                        <li>Crear una lista vacía para almacenar la matriz.</li>
+                        <li>Iniciar un contador numérico en <code>0</code>.</li>
+                        <li>Retornar la matriz completa.</li>
+                    </ol>
+
+                    <p>Ejemplos de valores que debe generar la función:</p>
+
+                    <pre class="code-line">Posición [0][0] → "0-P"
+Posición [0][1] → "1-I"
+Posición [0][2] → "2-P"
+Posición [0][3] → "3-I"</pre>
+
+                    <h4>2. Mostrar la matriz</h4>
+
+                    <p>
+                        Implementar la función:
+                    </p>
+
+                    <pre class="code-line">def mostrar_matriz(matriz):</pre>
+
+                    <p>Realizar las siguientes acciones:</p>
+
+                    <ol>
+                        <li>Recorrer la matriz fila por fila.</li>
+                        <li>Imprimir los elementos sin corchetes ni comas.</li>
+                        <li>Separar los elementos mediante <code> | </code>.</li>
+                        <li>Contar en cada fila los valores terminados en <code>P</code> y en <code>I</code>.</li>
+                        <li>Agregar al final de cada fila el resumen de pares e impares.</li>
+                    </ol>
+
+                    <p>Formato obligatorio:</p>
+
+                    <pre class="console">0-P | 1-I | 2-P | 3-I -> P: 2 / I: 2</pre>
+
+                    <h4>3. Procesar la lista de registros</h4>
+
+                    <p>
+                        Implementar la función:
+                    </p>
+
+                    <pre class="code-line">def procesar_registros(registros):</pre>
+
+                    <p>Recibir una lista de cadenas con el formato:</p>
+
+                    <pre class="code-line">" nombre ; edad ; tecnologia "</pre>
+
+                    <pre class="code-line">
+registros = [
+" ana torres ; 19 ; python ",
+" bruno mora ; 17 ; java ",
+" carla paz ; 25 ; python "
+]
+                    </pre>
+
+
+                    <p>Ejemplo de transformación:</p>
+
+                    <pre class="code-line">" ana torres ; 19 ; python "
+↓
+[["Ana Torres", 19, "PYTHON"],...]</pre>
+
+                    <p>Resultado Eserado</p>
+
+                    <pre class="console">*** REGISTROS PROCESADOS ***
+[
+    ["Ana Torres", 19, "PYTHON"],
+    ["Bruno Mora", 17, "JAVA"],
+    ["Carla Paz", 25, "PYTHON"]
+]</pre>
+                    <h4>4. Filtrar y ordenar registros</h4>
+
+                    <p>
+                        Implementar la función:
+                    </p>
+
+                    <pre class="code-line">def filtrar_registros(lista, tecnologia_buscada):</pre>
+
+                    <pre class="code-line">lista = [
+["Ana Torres", 19, "PYTHON"], 
+["Bruno Mora", 17, "JAVA"], 
+["Carla Paz", 25, "PYTHON"], 
+["Diego León", 31, "JAVASCRIPT"], 
+["Elena Ruiz", 22, "PYTHON"] ]
+
+tecnologia_buscada = "python"</pre>
+
+                    <pre class="console">*** REGISTROS ESPERADOS ***
+[ "Ana Torres", "Carla Paz", "Elena Ruiz" ]</pre>
+
+                    <h4>5. Integrar el programa</h4>
+
+                    <p>Desde el bloque principal:</p>
+
+                    <ol>
+                        <li>Definir las dimensiones de la matriz.</li>
+                        <li>Definir la lista de registros.</li>
+                        <li>Llamar a <code>crear_matriz</code>.</li>
+                        <li>Llamar a <code>mostrar_matriz</code>.</li>
+                        <li>Llamar a <code>procesar_registros</code>.</li>
+                        <li>Recorrer e imprimir los registros procesados.</li>
+                        <li>Llamar a <code>filtrar_registros</code>.</li>
+                        <li>Mostrar los nombres seleccionados mediante <code>join()</code>.</li>
+                    </ol>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>SALIDA ESPERADA DE REFERENCIA</h3>
+
+                    <pre class="console">*** MATRIZ GENERADA ***
+
+0-P | 1-I | 2-P | 3-I -> P: 2 / I: 2
+4-P | 5-I | 6-P | 7-I -> P: 2 / I: 2
+8-P | 9-I | 10-P | 11-I -> P: 2 / I: 2
+
+*** REGISTROS PROCESADOS ***
+
+Ana Torres - 19 años - PYTHON
+Bruno Mora - 17 años - JAVA
+Carla Paz - 25 años - PYTHON
+Diego León - 31 años - JAVASCRIPT
+Elena Ruiz - 22 años - PYTHON
+Fabio Solís - 16 años - PYTHON
+
+*** PERSONAS SELECCIONADAS ***
+
+Ana Torres, Carla Paz, Elena Ruiz</pre>
+
+                    <p>
+                        Respetar los valores generados, las condiciones de filtrado y el orden alfabético.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RECOMENDACIONES:</strong>
+                    <ul>
+                        <li>Verificar la indentación antes de ejecutar.</li>
+                        <li>Comprobar que cada función cumpla una única responsabilidad.</li>
+                        <li>Retornar la matriz y las listas antes de imprimirlas.</li>
+                        <li>Probar el archivo completo antes de subirlo al AVAC.</li>
+                        <li>Conservar exactamente los nombres de funciones solicitados.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div style="text-align: center; margin: 0 auto;">
+            <p class="signature">
+                Docente: Ing. Pablo Torres
+            </p>
+            <p>
+                Firma: _______________________________
+            </p>
+        </div>
+
+        <div class="footer">
+            <span>Formato aprobado con Res. C.S. N° 076-04-2016-04-20</span>
+            <span>Página 1 de 1</span>
+        </div>
+    </main>
+
+    <script src="../js/protection.js"></script>
+    <script src="../js/protection-security-overlay.js"></script>
+
+</body>
+
+</html>
+'''
+
+output = Path("/mnt/data/leccion_python_listas_matrices_funciones.html")
+output.write_text(html, encoding="utf-8")
+
+print(f"Archivo generado: {output}")

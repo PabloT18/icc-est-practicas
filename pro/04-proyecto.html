@@ -1,0 +1,693 @@
+from pathlib import Path
+
+html = r'''
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <title>Proyecto Final - Chatbot de Telegram con Python</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
+</head>
+
+<body>
+    <main
+        class="page"
+        id="practice-content"
+    >
+        <table class="guide-table">
+            <tr>
+                <td class="logo-cell">
+                    <img
+                        src="../assets/ups-svg-plain.svg"
+                        alt="Logo Universidad Politécnica Salesiana"
+                        class="logo-img"
+                    >
+                </td>
+                <td
+                    colspan="4"
+                    class="title-cell"
+                >
+                    FORMATO DE GUÍA DE PRÁCTICA DE LABORATORIO / TALLERES / CENTROS DE SIMULACIÓN – PARA DOCENTES
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><strong>CARRERA:</strong> Computación</td>
+                <td colspan="3"><strong>ASIGNATURA:</strong> Programación</td>
+            </tr>
+
+            <tr>
+                <td><strong>NRO. PROYECTO:</strong></td>
+                <td>Final</td>
+                <td colspan="3">
+                    <strong>TÍTULO:</strong> Desarrollo de un chatbot en Telegram con Python
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>OBJETIVO GENERAL</strong>
+                    <ul>
+                        <li>Desarrollar un chatbot funcional para Telegram mediante Python.</li>
+                        <li>Aplicar modularización mediante la separación de configuración, comandos e inicio del bot.
+                        </li>
+                        <li>Implementar comandos con validaciones, estructuras de datos, condiciones y ciclos.</li>
+                        <li>Configurar el perfil, el menú y los botones principales del bot.</li>
+                        <li>Documentar técnicamente el proyecto mediante Markdown y PDF.</li>
+                        <li>Presentar evidencias visuales del funcionamiento de cada comando.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="section-label">INSTRUCCIONES:</td>
+                <td
+                    colspan="4"
+                    class="section-content"
+                >
+                    <ol>
+                        <li>
+                            Desarrollar el proyecto mediante Python 3 y la librería
+                            <code>pyTelegramBotAPI</code>.
+                        </li>
+
+                        <li>
+                            Crear y configurar el bot mediante <strong>BotFather</strong>.
+                        </li>
+
+                        <li>
+                            Configurar obligatoriamente:
+                            <ul>
+                                <li>Definir un nombre para el bot.</li>
+                                <li>Definir un nombre de usuario válido para el bot.</li>
+                                <li>Asignar una imagen de perfil al bot.</li>
+                                <li>Configurar el botón <code>START</code>.</li>
+                                <li>Configurar el menú de comandos.</li>
+                                <li>Registrar en el menú todos los comandos implementados.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Organizar el proyecto mediante la siguiente estructura:
+                            <pre class="code-line">chatbot_telegram/
+│
+├── main.py
+├── config.py
+├── commands.py
+├── informe.md
+├── informe.pdf
+└── assets/
+    └── imagen_comando.jpg</pre>
+                        </li>
+
+                        <li>
+                            Conservar todos los comandos dentro de <code>commands.py</code>.
+                        </li>
+
+                        <li>
+                            Utilizar <code>main.py</code> únicamente para inicializar, configurar y ejecutar el bot.
+                        </li>
+
+                        <li>
+                            Almacenar el token únicamente dentro de <code>config.py</code>.
+                        </li>
+
+
+                        <li>
+                            Ejecutar completamente el proyecto antes de realizar la entrega.
+                        </li>
+
+                        <li>
+                            Subir todos los archivos directamente al AVAC, sin comprimirlos y sin empaquetarlos.
+                        </li>
+                    </ol>
+
+                    <h3>RÚBRICA RESUMIDA</h3>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Componente</th>
+                                <th>Aspectos por evaluar</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Informe técnico</td>
+                                <td>
+                                    Presentar carátula, marco teórico, descripción de comandos,
+                                    capturas, código, personalización, conclusiones y tabla resumen.
+                                </td>
+                                <td class="center">5.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Estructura y código</td>
+                                <td>
+                                    Separar archivos, utilizar <code>main</code>, organizar imports,
+                                    evitar duplicación y mantener código funcional.
+                                </td>
+                                <td class="center">4.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Comandos obligatorios</td>
+                                <td>
+                                    Implementar <code>/start</code>, <code>/ayuda</code>,
+                                    <code>/s_for</code>, <code>/s_while</code>,
+                                    <code>/s_if</code>, <code>/s_def</code>,
+                                    <code>/calcular</code> y un comando con imagen.
+                                </td>
+                                <td class="center">3.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Comandos inventados</td>
+                                <td>
+                                    Crear dos comandos diferentes, no triviales y con lógica propia.
+                                </td>
+                                <td class="center">1.5 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Configuración del bot</td>
+                                <td>
+                                    Configurar nombre, imagen, botón START, ayuda y menú completo.
+                                </td>
+                                <td class="center">1.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Entrega</td>
+                                <td>
+                                    Subir archivos sin comprimir, incluyendo informe Markdown y PDF.
+                                </td>
+                                <td class="center">0.5 pts</td>
+                            </tr>
+                            <tr class="subtotal">
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td class="center">15 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Criterio de no calificación:</strong>
+                        asignar una calificación de <strong>0/15</strong> cuando el bot no ejecute
+                        o cuando todo el código se encuentre en un único archivo.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>ACTIVIDADES POR DESARROLLAR</h3>
+
+                    <h4>1. Configurar el bot en BotFather</h4>
+
+                    <p>Realizar obligatoriamente las siguientes configuraciones:</p>
+
+                    <ol>
+                        <li>Crear el bot mediante el comando <code>/newbot</code>.</li>
+                        <li>Asignar un nombre visible al bot.</li>
+                        <li>Asignar un nombre de usuario terminado en <code>bot</code>.</li>
+                        <li>Configurar una imagen de perfil.</li>
+                        <li>Configurar la descripción del bot.</li>
+                        <li>Configurar el texto mostrado antes de presionar <code>START</code>.</li>
+                        <li>Configurar el menú mediante <code>/setcommands</code>.</li>
+                        <li>Incluir en el menú todos los comandos obligatorios, inventados y trabajados en clases.</li>
+                    </ol>
+
+                    <h4>2. Implementar el comando /start</h4>
+
+                    <p>Implementar el comando:</p>
+
+                    <pre class="code-line">/start</pre>
+
+                    <p>Realizar las siguientes acciones:</p>
+
+                    <ol>
+                        <li>Mostrar un mensaje de bienvenida.</li>
+                        <li>Incluir el nombre configurado para el bot.</li>
+                        <li>Indicar brevemente el propósito del bot.</li>
+                        <li>Indicar al usuario que puede utilizar <code>/ayuda</code>.</li>
+                        <li>Verificar que el botón <code>START</code> ejecute correctamente este comando.</li>
+                    </ol>
+
+                    <h4>3. Implementar el comando /ayuda</h4>
+
+                    <p>Implementar el comando:</p>
+
+                    <pre class="code-line">/ayuda</pre>
+
+                    <p>Mostrar obligatoriamente:</p>
+
+                    <ul>
+                        <li>Todos los comandos obligatorios del proyecto.</li>
+                        <li>Los dos comandos inventados.</li>
+                        <li>Los comandos desarrollados durante las prácticas.</li>
+                        <li>Los comandos implementados durante las clases.</li>
+                        <li>Una descripción breve de la función de cada comando.</li>
+                    </ul>
+
+                    <p>
+                        Mantener el contenido de <code>/ayuda</code> consistente con el menú configurado en Telegram.
+                    </p>
+
+                    <h4>4. Implementar comandos individuales de sentencias</h4>
+
+                    <p>
+                        Crear cuatro comandos independientes para mostrar información sobre estructuras básicas de
+                        Python.
+                    </p>
+
+
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Comando</th>
+                                <th>Contenido obligatorio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/s_for</code></td>
+                                <td>Mostrar significado, sintaxis, explicación y ejemplo funcional de <code>for</code>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>/s_while</code></td>
+                                <td>Mostrar significado, sintaxis, explicación y ejemplo funcional de
+                                    <code>while</code>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>/s_if</code></td>
+                                <td>Mostrar significado, sintaxis, explicación y ejemplo funcional de <code>if</code>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>/s_def</code></td>
+                                <td>Mostrar significado, sintaxis, explicación y ejemplo funcional de <code>def</code>.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Formato obligatorio para cada respuesta: (ejemplo de la respuesta del comando s_for)</p>
+
+                    <pre class="console">Sentencia: for
+
+Significado:
+Permitir repetir instrucciones o recorrer una colección.
+
+Sintaxis:
+for variable in coleccion:
+    instrucciones
+
+Explicación:
+Explicar técnicamente cómo funcionar la sentencia.
+
+Ejemplo:
+for numero in range(3):
+    print(numero)
+
+Salida:
+0
+1
+2</pre>
+
+                    <p>
+
+                        Mostrar directamente la información correspondiente al ejecutar cada comando.
+                    </p>
+
+                    <h4>5. Implementar el comando /calcular</h4>
+
+                    <p>Implementar el comando:</p>
+
+                    <pre class="code-line">/calcular &lt;numero1&gt; &lt;operacion&gt; &lt;numero2&gt;</pre>
+
+                    <p>Permitir las siguientes operaciones:</p>
+
+                    <ul>
+                        <li><code>+</code> para sumar.</li>
+                        <li><code>-</code> para restar.</li>
+                        <li><code>*</code> para multiplicar.</li>
+                        <li><code>/</code> para dividir.</li>
+                    </ul>
+
+                    <p>Aplicar obligatoriamente:</p>
+
+                    <ol>
+                        <li>Extraer los parámetros enviados por el usuario.</li>
+                        <li>Validar la cantidad de parámetros.</li>
+                        <li>Validar que ambos valores sean numéricos.</li>
+                        <li>Evaluar la operación mediante <code>if</code> y <code>elif</code>.</li>
+                        <li>Controlar la división para cero.</li>
+                        <li>Mostrar mensajes de error claros.</li>
+                        <li>Evitar el uso de <code>eval</code>.</li>
+                    </ol>
+
+                    <p>Ejemplo:</p>
+
+                    <pre class="console">/calcular 10 + 5
+
+Resultado: 10 + 5 = 15</pre>
+
+                    <h4>6. Implementar un comando con imagen</h4>
+
+                    <p>
+                        Crear un comando propio que devuelva al chat una imagen mediante
+                        <code>send_photo</code>.
+                    </p>
+
+                    <p> Investigar como se realiza el envio de la fotografua al chat</p>
+
+                    <p>Ejemplos permitidos:</p>
+
+                    <pre class="code-line">/logo
+/paisaje
+/mascota
+/foto_perfil</pre>
+
+                    <p>Aplicar obligatoriamente:</p>
+
+                    <ul>
+                        <li>Responder una imagen local o una imagen obtenida desde una URL.</li>
+                        <li>Verificar que el comando aparezca en <code>/ayuda</code> y en el menú.</li>
+                    </ul>
+
+                    <h4>7. Inventar dos comandos</h4>
+
+                    <p>
+                        Diseñar e implementar dos comandos diferentes a los comandos obligatorios.
+                    </p>
+
+                    <p>Cada comando debe:</p>
+
+                    <ul>
+                        <li>Resolver una necesidad concreta.</li>
+                        <li>Incluir lógica propia.</li>
+                        <li>Utilizar condiciones, ciclos, listas o diccionarios.</li>
+                        <li>Procesar información enviada por el usuario cuando corresponda.</li>
+                        <li>Generar resultados dinámicos.</li>
+                        <li>Validar entradas incorrectas.</li>
+                        <li>Aparecer en <code>/ayuda</code> y en el menú de Telegram.</li>
+                    </ul>
+
+                    <p>No aceptar como comando inventado:</p>
+
+                    <ul>
+                        <li>Responder únicamente un texto fijo.</li>
+                        <li>Copiar uno de los comandos obligatorios.</li>
+                        <li>Enviar únicamente una imagen sin procesamiento adicional.</li>
+                    </ul>
+
+                    <h4>8. Incorporar los comandos de prácticas y clases</h4>
+
+                    <p>
+                        Conservar e integrar los comandos desarrollados previamente durante las prácticas
+                        y las clases.
+                    </p>
+
+                    <p>Verificar que cada comando:</p>
+
+                    <ul>
+                        <li>Ejecutar correctamente.</li>
+                        <li>Encontrarse dentro de <code>commands.py</code>.</li>
+                        <li>Aparecer en el comando <code>/ayuda</code>.</li>
+                        <li>Aparecer en el menú configurado mediante BotFather.</li>
+                        <li>Contar con su respectiva evidencia dentro del informe.</li>
+                    </ul>
+
+                    <h4>9. Organizar los archivos del proyecto</h4>
+
+                    <h5>main.py</h5>
+
+                    <ul>
+                        <li>Importar el token desde <code>config.py</code>.</li>
+                        <li>Crear la instancia del bot.</li>
+                        <li>Registrar los comandos definidos en <code>commands.py</code>.</li>
+                        <li>Ejecutar <code>bot.polling()</code> dentro de la función <code>main</code>.</li>
+                        <li>Utilizar el bloque <code>if __name__ == "__main__":</code>.</li>
+                    </ul>
+
+                    <h5>commands.py</h5>
+
+                    <ul>
+                        <li>Contener todos los manejadores de comandos.</li>
+                        <li>Recibir la instancia del bot desde <code>main.py</code>.</li>
+                        <li>No ejecutar <code>bot.polling()</code>.</li>
+                        <li>Evitar código duplicado.</li>
+                    </ul>
+
+                    <h5>config.py</h5>
+
+                    <ul>
+                        <li>Almacenar el token del bot.</li>
+                        <li>Evitar escribir el token directamente en <code>main.py</code>.</li>
+                    </ul>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>INFORME DEL PROYECTO</h3>
+
+                    <p>
+                        Elaborar el informe en formato Markdown investigar el formato (.md) y convertirlo posteriormente
+                        a PDF.
+                    </p>
+
+                    <h4>1. Carátula</h4>
+
+                    <p>Incluir:</p>
+
+                    <ul>
+                        <li>Logo de la Universidad Politécnica Salesiana.</li>
+                        <li>Nombre de la Universidad Politécnica Salesiana.</li>
+                        <li>Carrera.</li>
+                        <li>Asignatura.</li>
+                        <li>Título del proyecto.</li>
+                        <li>Nombre del estudiante.</li>
+                        <li>Curso.</li>
+                        <li>Fecha.</li>
+                    </ul>
+
+                    <p>
+                        Utilizar el logo de la universidad. No utilizar el logo particular de la carrera.
+                    </p>
+
+                    <h4>2. Marco teórico</h4>
+
+                    <p>Explicar con palabras propias:</p>
+
+                    <ul>
+                        <li>Definir qué es un bot de Telegram.</li>
+                        <li>Explicar qué es <code>pyTelegramBotAPI</code>.</li>
+                        <li>Definir qué es un comando.</li>
+                        <li>Explicar la importancia de separar la lógica en archivos.</li>
+                        <li>Explicar el uso de la función <code>main</code> en Python.</li>
+                        <li>Explicar la función de BotFather.</li>
+                    </ul>
+
+                    <h4>3. Tabla resumen de comandos</h4>
+
+                    <p>Agregar una tabla con el siguiente formato:</p>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Comando</th>
+                                <th>Qué realizar</th>
+                                <th>Tipo</th>
+                                <th>Captura incluida</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/start</code></td>
+                                <td>Mostrar la bienvenida y orientar al usuario.</td>
+                                <td>Obligatorio</td>
+                                <td>Sí</td>
+                            </tr>
+                            <tr>
+                                <td><code>/ayuda</code></td>
+                                <td>Listar todos los comandos disponibles.</td>
+                                <td>Obligatorio</td>
+                                <td>Sí</td>
+                            </tr>
+                            <tr>
+                                <td><code>/s_for</code></td>
+                                <td>Explicar la sentencia <code>for</code>.</td>
+                                <td>Obligatorio</td>
+                                <td>Sí</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        Completar la tabla con todos los comandos obligatorios, inventados,
+                        de prácticas y de clases.
+                    </p>
+
+                    <h4>4. Desarrollo de cada comando</h4>
+
+                    <p>Documentar cada comando mediante la siguiente estructura:</p>
+
+                    <pre class="code-line">### Comando /nombre
+
+**Qué hace el comando:**
+
+Describir su función.
+
+**Lógica utilizada:**
+
+Explicar condiciones, ciclos, listas, diccionarios o validaciones.
+
+**Forma de uso:**
+
+/nombre parámetros
+
+```python
+# Código correspondiente
+```
+
+**Captura de ejecución:**
+
+![Ejecución del comando](capturas/nombre-comando.png)</pre>
+
+                    <p>
+
+
+
+                    </p>
+                    <ul>
+                        <li>Indicar qué realizar el comando.</li>
+                        <li>Explicar la lógica utilizada.</li>
+                        <li>Mostrar el código correspondiente.</li>
+                        <li>Agregar una captura ejecutando el comando.</li>
+                        <li>Capturar la ejecución desde un teléfono o desde Telegram Desktop.</li>
+                        <li>Mostrar en la captura el comando enviado y la respuesta completa del bot.</li>
+                    </ul>
+
+                    <h4>5. Personalización del bot</h4>
+                    <ul>
+                        <li>Incluir el nombre configurado.</li>
+                        <li>Incluir el nombre de usuario.</li>
+                        <li>Incluir la imagen de perfil.</li>
+                        <li>Incluir la descripción configurada.</li>
+                        <li>Agregar una captura del perfil del bot.</li>
+                        <li>Agregar una captura del botón <code>START</code>.</li>
+                        <li>Agregar una captura del menú completo de comandos.</li>
+                        <li>Explicar brevemente la configuración realizada.</li>
+                    </ul>
+
+                    <h4>6. Conclusiones</h4>
+                    <ul>
+                        <li>Identificar los aprendizajes alcanzados.</li>
+                        <li>Describir las dificultades encontradas.</li>
+                        <li>Explicar la utilidad de modularizar el código.</li>
+                        <li>Relacionar el proyecto con aplicaciones reales.</li>
+                    </ul>
+
+                    <h4>7. Convertir el informe Markdown a PDF</h4>
+                    <h5>Opción 1: Visual Studio Code</h5>
+                    <ol>
+                        <li>Abrir el archivo <code>informe.md</code>.</li>
+                        <li>Instalar una extensión para exportar Markdown a PDF, como <code>Markdown PDF</code>.</li>
+                        <li>Presionar <code>Ctrl + Shift + P</code>.</li>
+                        <li>Buscar <code>Markdown PDF: Export (pdf)</code>.</li>
+                        <li>Ejecutar la exportación.</li>
+                        <li>Verificar la generación de <code>informe.pdf</code>.</li>
+                    </ol>
+
+                    <h5>Opción 2: Buscar alguna pagina que convierta Markdown a PDF</h5>
+
+                    <p>Revisar el PDF antes de entregar para comprobar la visualización de capturas, tablas y bloques de
+                        código.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>ENTREGA</h3>
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Archivo o recurso</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>main.py</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>config.py</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>commands.py</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>informe.md</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>informe.pdf</code></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <p><strong>No comprimir los archivos.</strong> No entregar archivos <code>.zip</code>,
+                        <code>.rar</code> ni otro formato empaquetado.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>RECOMENDACIONES</h3>
+                    <ul>
+
+                        <li>Verificar que todos los comandos aparecer tanto en <code>/ayuda</code> como en el menú.</li>
+                        <li>Comprobar que las capturas corresponder al código entregado.</li>
+                        <li>Evitar respuestas fijas en los comandos inventados.</li>
+                        <li>Validar los errores antes de enviar una respuesta al usuario.</li>
+                        <li>Ejecutar el bot desde <code>main.py</code>.</li>
+                        <li>Revisar el informe Markdown y el PDF antes de subirlos.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div style="text-align: center; margin: 0 auto;">
+            <p class="signature">Docente: Ing. Pablo Torres</p>
+            <p>Firma: _______________________________</p>
+        </div>
+
+        <div class="footer">
+            <span>Formato aprobado con Res. C.S. N° 076-04-2016-04-20</span>
+            <span>Proyecto final</span>
+        </div>
+    </main>
+
+    <script src="../js/protection.js"></script>
+    <script src="../js/protection-security-overlay.js"></script>
+</body>
+
+</html>

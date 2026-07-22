@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <title>Examen de Python - Listas, matrices y funciones</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
+</head>
+
+<body>
+    <main
+        class="page"
+        id="practice-content"
+    >
+        <table class="guide-table">
+            <tr>
+                <td class="logo-cell">
+                    <img
+                        src="../assets/ups-svg-plain.svg"
+                        alt="Logo UPS"
+                        class="logo-img"
+                    >
+                </td>
+                <td
+                    colspan="4"
+                    class="title-cell"
+                >
+                    FORMATO DE GUÍA DE PRÁCTICA DE LABORATORIO / TALLERES / CENTROS DE SIMULACIÓN – PARA DOCENTES
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><strong>CARRERA:</strong> Computación</td>
+                <td colspan="3"><strong>ASIGNATURA:</strong> Programación</td>
+            </tr>
+
+            <tr>
+                <td><strong>NRO. LECCIÓN:</strong></td>
+                <td>Final - Versión 2</td>
+                <td colspan="3">
+                    <strong>TÍTULO:</strong> Listas, matrices y funciones en Python
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>OBJETIVO</strong>
+                    <ul>
+                        <li>Crear una matriz mediante ciclos <code>for</code> anidados.</li>
+                        <li>Procesar registros almacenados como cadenas de texto.</li>
+                        <li>Filtrar información mediante condiciones y ordenar resultados.</li>
+                        <li>Organizar la solución mediante funciones con parámetros y valores de retorno.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="section-label">INSTRUCCIONES:</td>
+                <td
+                    colspan="4"
+                    class="section-content"
+                >
+                    <ol>
+                        <li>
+                            Desarrollar el examen en un único archivo llamado:
+                            <pre class="code-line">nombre_apellido_examen.py</pre>
+                        </li>
+
+                        <li>
+                            Implementar exactamente las siguientes tres funciones:
+                            <table class="rubric">
+                                <thead>
+                                    <tr>
+                                        <th>N.°</th>
+                                        <th>Función obligatoria</th>
+                                        <th>Responsabilidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="center">1</td>
+                                        <td><code>crear_matriz(filas, columnas)</code></td>
+                                        <td>
+                                            Construir la matriz mediante ciclos <code>for</code> anidados, colocar
+                                            <code>#</code> en la última columna, colocar <code>*</code> en las demás
+                                            posiciones, imprimirla y retornarla.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">2</td>
+                                        <td><code>procesar_estudiantes(registros)</code></td>
+                                        <td>Procesar, imprimir y retornar los registros de estudiantes.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">3</td>
+                                        <td><code>seleccionar_estudiantes(lista, carrera_buscada)</code></td>
+                                        <td>Filtrar y ordenar los nombres que cumplan las condiciones.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li>
+                            Definir los siguientes datos dentro del bloque principal:
+                            <div class="code-copy-container">
+                                <button
+                                    type="button"
+                                    class="copy-button"
+                                    onclick="copiarDatosEntrada()"
+                                >
+                                    Copiar datos
+                                </button>
+
+                                <pre
+                                    class="code-line"
+                                    id="datos-entrada"
+                                >filas = 4
+columnas = 5
+
+registros = [
+    " ana perez ; 20 ; computacion ",
+    " bruno lopez ; 17 ; electronica ",
+    " carla mora ; 22 ; computacion ",
+    " diego paz ; 19 ; mecanica ",
+    " elena ruiz ; 24 ; COMPUTACION ",
+    " fabio solis ; 16 ; computacion ",
+    " gabriela torres ; 21 ; electronica ",
+    " hugo castro ; 26 ; computacion ",
+    " ines vega ; 18 ; telecomunicaciones ",
+    " jorge salas ; 23 ; computacion ",
+    " karla leon ; 20 ; mecanica ",
+    " luis ortiz ; 27 ; COMPUTACION ",
+    " monica paz ; 17 ; computacion ",
+    " nicolas mora ; 25 ; electronica ",
+    " olivia ruiz ; 19 ; computacion "
+]
+
+carrera_buscada = "COMPUTACION"</pre>
+                            </div>
+                        </li>
+
+                        <li>
+                            Respetar las siguientes restricciones:
+                            <ul>
+                                <li>No utilizar <code>input</code>.</li>
+                                <li>No utilizar librerías externas.</li>
+                                <li>No utilizar comprensión de listas.</li>
+                                <li>No utilizar <code>sum</code>, <code>max</code> ni <code>min</code>.</li>
+                                <li>No cambiar los nombres de las funciones.</li>
+                                <li>No crear funciones adicionales.</li>
+                                <li>Utilizar ciclos <code>for</code>, condicionales y métodos básicos de listas y
+                                    cadenas.</li>
+                                <li>Retornar los resultados solicitados mediante <code>return</code>.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Ejecutar completamente el archivo antes de realizar la entrega.
+                        </li>
+
+                        <li>
+                            Subir el archivo <code>nombre_apellido_examen.py</code> a la actividad correspondiente en
+                            AVAC.
+                        </li>
+                    </ol>
+
+                    <h3>RÚBRICA</h3>
+
+                    <table class="rubric">
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Descripción</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Estructura y ejecución</td>
+                                <td>Entregar un único archivo, utilizar el bloque principal y ejecutar sin errores.</td>
+                                <td class="center">1.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Crear matriz</td>
+                                <td>Construir correctamente la matriz mediante ciclos <code>for</code> anidados.</td>
+                                <td class="center">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Procesar estudiantes</td>
+                                <td>Aplicar correctamente <code>split</code>, <code>strip</code>, <code>title</code>,
+                                    <code>upper</code>, <code>int</code> y <code>append</code>.
+                                </td>
+                                <td class="center">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Seleccionar estudiantes</td>
+                                <td>Filtrar por edad y carrera, agregar los nombres y ordenar el resultado.</td>
+                                <td class="center">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Integración y salida</td>
+                                <td>Llamar las tres funciones y mostrar los resultados con el formato solicitado.</td>
+                                <td class="center">1.0 pts</td>
+                            </tr>
+                            <tr class="subtotal">
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td class="center">8.0 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Criterio de no calificación:</strong>
+                        asignar una calificación de <strong>0/8</strong> cuando el programa no ejecute.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>ACTIVIDADES POR DESARROLLAR</h3>
+
+                    <h4>1. Crear la matriz</h4>
+
+                    <p>Implementar la función:</p>
+
+                    <pre class="code-line">def crear_matriz(filas, columnas):</pre>
+
+                    <p>Realizar las siguientes acciones:</p>
+
+                    <ol>
+                        <li>Crear una lista vacía llamada <code>matriz</code></li>
+                        <li>Realizar las condiciones necesarias para formar el patrón siguiente</li>
+                        <li>La ultima columna de la matriz seran #</li>
+                        <li>El resto de columnas de la matriz seran con *</li>
+                        <li>Despues de generar la matriz imprimir en el mismo metodo</li>
+                        <li><strong>La creación e impresión de la matrizd deben estar en ciclos for separados</strong>
+                        </li>
+                    </ol>
+
+                    <p>Resultado esperado para una matriz de 3 filas y 4 columnas:</p>
+
+                    <pre class="console">*** MATRIZ GENERADA ***
+
+* | * | * | #
+* | * | * | #
+* | * | * | #</pre>
+
+
+
+                    <h4>2. Procesar los registros</h4>
+
+                    <p>Implementar la función:</p>
+
+                    <pre class="code-line">def procesar_estudiantes(registros):</pre>
+
+                    <p>Recibir registros con el siguiente formato, donde cada registro es:</p>
+
+                    <pre class="code-line">" nombre ; edad ; carrera "</pre>
+
+                    <p>Transformar cada registro al siguiente formato:</p>
+
+                    <pre class="code-line">[ "CARRERA", edad, "Nombre Apellido"]</pre>
+                    <p>Cada lista resultante debe respetar los siguientes tipos y formatos:</p>
+
+                    <pre class="code-line">[texto en mayúsculas, entero, texto con formato título]</pre>
+
+                    <p>Ejemplo:</p>
+
+                    <pre class="code-line">" ana perez ; 20 ; computacion "
+↓
+["COMPUTACION", 20,"Ana Perez"]</pre>
+
+
+                    <p>Impresión:</p>
+                    <ul>
+                        <li>Imprimir cada registro procesado en una línea independiente.</li>
+                        <li>
+                            Imprimir cada registro en una línea independiente, agregando un índice iniciado en
+                            <code>1</code> y separado mediante <code> - </code>.
+                        </li>
+                    </ul>
+
+                    <p>Ejemplo de la impresión</p>
+
+                    <pre class="console">*** ESTUDIANTES PROCESADOS ***
+
+1 - ["COMPUTACION", 20,"Ana Perez"]
+2 - ["ELETRICIDAD", 22,"Carla Moran"]
+3 - ["AUTOMOTRIZ", 24,"Elena Ruiz"]
+4 - ["COMPUTACION", 16,"Fabio Solis"]
+5 - ["COMPUTACION", 22,"Carlos Mora"]
+6 - ["COMPUTACION", 24,"Diego Paz"]
+                    </pre>
+
+                    <p>Despues de imprimir, el resultado del metodo `procesar_estudiantes` debe devolver el listado de
+                        todos los registros
+                        utilizados </p>
+
+                    <p><strong>Este listado debera ser utilizado en el metodo 3 </strong></p>
+
+
+                    <h4>3. Seleccionar estudiantes</h4>
+
+                    <p>Este metodo debe recibir el listado procesado anteriormente</p>
+
+                    <p>Implementar la función:</p>
+
+                    <pre class="code-line">def seleccionar_estudiantes(lista, carrera_buscada):</pre>
+
+                    <p>Seleccionar únicamente los estudiantes que cumplan estas condiciones:</p>
+
+                    <ul>
+                        <li>Tener una edad mayor o igual a <code>18</code>.</li>
+                        <li>Pertenecer a la carrera recibida en <code>carrera_buscada</code>.</li>
+                        <li>Guardar en lista solo el nombre de los estudiantes que cumplan con las condiciones</li>
+                        <li>Ordenar la lista de nombres en orden alfabético de manera descendente (Z -> A).</li>
+                        <li>Todos los nombres de la lista deben estar en mayusculas</li>
+                        <li>Imprimir el listado resultante, elemento por elemento separados por punto y como (;) ->
+                            (DIEGO PAZ; CARLOS MORA; ANA PEREZ) no debe aperecner ; al final de la linea de impreseión
+                        </li>
+                    </ul>
+
+                    <p>Ejemplo de solución (datos no son los de evaluación)</p>
+
+                    <pre class="code-line">carrera_buscada = "COMPUTACION"</pre>
+
+                    <pre class="code-line"># Datos de entrada
+[
+["COMPUTACION", 20,"Ana Perez"],
+["ELETRICIDAD", 22,"Carla Moran"],
+["AUTOMOTRIZ", 24,"Elena Ruiz"],
+["COMPUTACION", 16,"Fabio Solis"],
+["COMPUTACION", 22,"Carlos Mora"],
+["COMPUTACION", 24,"Diego Paz"]
+]
+                     </pre>
+
+                    <p>Resultado esperado:</p>
+
+                    <pre class="console">
+*** ESTUDIANTES SELECCIONADOS ***
+DIEGO PAZ; CARLOS MORA; ANA PEREZ
+                    </pre>
+
+                    <h4>4. Integrar el programa</h4>
+
+
+                    <p>Realizar las siguientes acciones:</p>
+
+                    <ol>
+                        <li>Definir las dimensiones de la matriz.</li>
+                        <li>Definir los registros y la carrera buscada.</li>
+                        <li>Llamar a <code>crear_matriz</code>.</li>
+                        <li>Imprimir la matriz</li>
+                        <li>Llamar a <code>procesar_estudiantes</code>.</li>
+                        <li>Recorrer e imprimir los estudiantes procesados, en el formato solicitado</li>
+                        <li>Retornar el listado y guardar el resultado en una variable</li>
+                        <li>Llamar a <code>seleccionar_estudiantes</code>, enviando el resultado de la funcion anterior.
+                        </li>
+                        <li>Imprimir el listado de los estudiantes seleccionados, en el formato solicitado</li>
+                    </ol>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <h3>SALIDA DE REFERENCIA</h3>
+
+                    <p>
+                        Utilizar este resultado únicamente como ejemplo de formato. Los datos mostrados
+                        no corresponden a los registros de la evaluación.
+                    </p>
+
+                    <pre class="console">*** MATRIZ GENERADA ***
+
+* | * | * | #
+* | * | * | #
+* | * | * | #
+
+*** ESTUDIANTES PROCESADOS ***
+
+1 - ["COMPUTACION", 20,"Ana Perez"]
+2 - ["ELETRICIDAD", 22,"Carla Moran"]
+3 - ["AUTOMOTRIZ", 24,"Elena Ruiz"]
+4 - ["COMPUTACION", 16,"Fabio Solis"]
+5 - ["COMPUTACION", 22,"Carla Mora"]
+6 - ["COMPUTACION", 24,"Diego Paz"]
+
+
+*** ESTUDIANTES SELECCIONADOS ***
+
+DIEGO PAZ; CARLOS MORA; ANA PEREZ
+</pre>
+
+                    <p>
+                        Respetar los valores de la matriz, las posiciones de los datos,
+                        las condiciones de selección y el orden alfabético.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <strong>RECOMENDACIONES:</strong>
+                    <ul>
+                        <li>Verificar la indentación antes de ejecutar.</li>
+                        <li>Conservar exactamente los nombres de las funciones.</li>
+                        <li>Retornar los resultados antes de imprimirlos.</li>
+                        <li>Verificar las posiciones de nombre, edad y carrera.</li>
+                        <li>Probar el archivo completo antes de subirlo al AVAC.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div style="text-align: center; margin: 0 auto;">
+            <p class="signature">
+                Docente: Ing. Pablo Torres
+            </p>
+            <p>
+                Firma: _______________________________
+            </p>
+        </div>
+
+        <div class="footer">
+            <span>Formato aprobado con Res. C.S. N° 076-04-2016-04-20</span>
+            <span>Página 1 de 1</span>
+        </div>
+    </main>
+
+    <!-- <script src="../js/protection.js"></script>
+    <script src="../js/protection-security-overlay.js"></script> -->
+
+    <script>
+        function copiarDatosEntrada() {
+            const bloque = document.getElementById("datos-entrada");
+            const boton = document.querySelector(".copy-button");
+
+            navigator.clipboard.writeText(bloque.textContent)
+                .then(() => {
+                    const textoOriginal = boton.textContent;
+
+                    boton.textContent = "Copiado";
+
+                    setTimeout(() => {
+                        boton.textContent = textoOriginal;
+                    }, 1500);
+                })
+                .catch(() => {
+                    copiarConMetodoAlternativo(bloque.textContent, boton);
+                });
+        }
+
+        function copiarConMetodoAlternativo(texto, boton) {
+            const areaTemporal = document.createElement("textarea");
+
+            areaTemporal.value = texto;
+            areaTemporal.style.position = "fixed";
+            areaTemporal.style.opacity = "0";
+
+            document.body.appendChild(areaTemporal);
+
+            areaTemporal.focus();
+            areaTemporal.select();
+
+            const copiado = document.execCommand("copy");
+
+            document.body.removeChild(areaTemporal);
+
+            if (copiado) {
+                const textoOriginal = boton.textContent;
+
+                boton.textContent = "Copiado";
+
+                setTimeout(() => {
+                    boton.textContent = textoOriginal;
+                }, 1500);
+            } else {
+                boton.textContent = "Error al copiar";
+            }
+        }
+    </script>
+</body>
+
+</html>
